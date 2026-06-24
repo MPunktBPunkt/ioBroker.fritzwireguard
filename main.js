@@ -10,10 +10,12 @@ _dbg('=== main.js geladen ===');
 
 process.on('uncaughtException', function(e) {
     _dbg('uncaughtException: ' + e.message + '\n' + e.stack);
-    // NICHT process.exit() aufrufen - adapter-core soll selbst entscheiden
+    // Weiterwerfen — sonst haengt der Prozess nach Objects-Init ohne Fehlermeldung
+    throw e;
 });
-process.on('unhandledRejection', function(reason, promise) {
+process.on('unhandledRejection', function(reason) {
     _dbg('unhandledRejection: ' + (reason && reason.stack ? reason.stack : String(reason)));
+    throw reason;
 });
 
 const utils = require('@iobroker/adapter-core');
@@ -221,16 +223,19 @@ class FritzWireguard extends utils.Adapter {
     constructor(options = {}) {
         _dbg('constructor() aufgerufen, options keys: ' + Object.keys(options || {}).join(','));
         super({ ...options, name: 'fritzwireguard' });
-        _dbg('super() erfolgreich');
+        _dbg('super() erfolgreich, namespace=' + (this.namespace || '?') + ' argv=' + JSON.stringify(process.argv.slice(2)));
         this._server    = null;
         this._logBuffer = [];
         this._pollTimer = null;
         this._wgCfgPath = null;
         this._cache     = { wg: {}, fritzbox: {}, devices: [] };
         this._tunnelMgr = null;
+        this._startupDiag = [10, 30, 60, 120].map(sec => setTimeout(() => {
+            _dbg(sec + 's nach constructor: adapterReady=' + !!this.adapterReady + ' pid=' + process.pid);
+        }, sec * 1000));
         this.on('ready',       this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
-        this.on('message',     this.onMessage.bind(this));
+        // message-Handler erst in onReady — Admin textSendTo waehrend Init blockierte sonst DB-Start
         this.on('unload',      this.onUnload.bind(this));
     }
 
@@ -344,6 +349,16 @@ class FritzWireguard extends utils.Adapter {
 
     async onMessage(obj) {
         if (!obj || !obj.command) return false;
+
+        if (!this.adapterReady) {
+            if (obj.callback) {
+                this.sendTo(obj.from, obj.command, {
+                    text: 'Adapter startet noch — bitte kurz warten …',
+                    style: { color: '#ff9800' }
+                }, obj.callback);
+            }
+            return true;
+        }
 
         try {
             switch (obj.command) {
@@ -685,7 +700,7 @@ class FritzWireguard extends utils.Adapter {
 
     _json(res, obj) { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(obj)); }
 
-    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.14'; } }
+    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.16'; } }
 
     // ── Web-UI ────────────────────────────────────────────────────────────────
     _buildUI() {
@@ -895,7 +910,12 @@ class FritzWireguard extends utils.Adapter {
     // Lifecycle
     async onReady() {
         try {
+            if (this._startupDiag) {
+                for (const t of this._startupDiag) clearTimeout(t);
+                this._startupDiag = null;
+            }
             _dbg('onReady() gestartet, config: ' + JSON.stringify({webPort: this.config && this.config.webPort, autoConnect: this.config && this.config.autoConnect}));
+            this.on('message', this.onMessage.bind(this));
             this._log('SYSTEM', 'SYSTEM', 'FritzWireguard v' + this._version() + ' startet \u2026');
             await this._initStates();
 
@@ -932,6 +952,10 @@ class FritzWireguard extends utils.Adapter {
         // ioBroker hat sehr kurzen Timeout (< 1s bei force-stop)
         // Alles synchron + fire-and-forget
         try {
+            if (this._startupDiag) {
+                for (const t of this._startupDiag) clearTimeout(t);
+                this._startupDiag = null;
+            }
             if (this._pollTimer) { clearInterval(this._pollTimer); this._pollTimer = null; }
             if (this._tunnelMgr) { this._tunnelMgr.stopAll(); }
             if (this._server) {
