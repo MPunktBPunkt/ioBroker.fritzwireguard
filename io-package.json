@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.17",
+    "version": "0.2.18",
     "news": {
+      "0.2.18": {
+        "en": "Fix: lazy-load adapter implementation via thin main.js loader — fixes States-DB startup hang",
+        "de": "Fix: Adapter-Implementierung per duennem main.js-Loader lazy laden — behebt States-DB-Startup-Hänger"
+      },
       "0.2.17": {
         "en": "Fix: remove throw in global exception handlers (broke States-DB init); message handler early with no sendTo during startup",
         "de": "Fix: throw in globalen Exception-Handlern entfernt (blockierte States-DB-Init); Message-Handler frueh ohne sendTo beim Start"

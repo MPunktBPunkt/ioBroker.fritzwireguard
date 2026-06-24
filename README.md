@@ -1,6 +1,6 @@
 # ioBroker FritzWireguard Adapter
 
-[![Version](https://img.shields.io/badge/version-0.2.17-blue.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
+[![Version](https://img.shields.io/badge/version-0.2.18-blue.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D16-brightgreen.svg)](https://nodejs.org)
 [![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
@@ -243,7 +243,7 @@ fritzwireguard.0.info.connection     → true
 | Lokales Netz nicht erreichbar | Gleiches Subnetz `192.168.178.x` | `AllowedIPs` auf `/32`-Hosts beschränken |
 | Kostal timeout | Tunnel nicht aktiv / falsche IP | Ziel-IP `192.168.178.30` im **Tunnel**, nicht im Kostal-Adapter |
 | TR-064 Fehler | Falsche Zugangsdaten | Optional — für Kostal-Tunnel nicht zwingend nötig |
-| Adapter startet nicht | Alte Version / Startup-Hänger | Mindestens v0.2.17 installieren; Admin-Tabs schließen |
+| Adapter startet nicht | Alte Version / Startup-Hänger | Mindestens v0.2.18 installieren; Instanz aktivieren; Admin-Tabs schließen |
 | Docker/Synology | WireGuard nicht im Container | WireGuard muss auf dem **Host-System** laufen |
 
 **Debug-Log:** `/tmp/fritzwireguard-debug.log` auf dem ioBroker-Host.
@@ -321,6 +321,10 @@ iobroker restart fritzwireguard
 ```
 
 ## Changelog
+
+### 0.2.18 (2026-06-24)
+* **Fix:** Dünner `main.js`-Loader lädt Implementierung in `lib/adapter.js` erst bei Instanz-Start — behebt Hänger vor States-DB
+* **Fix:** Message-Handler wieder erst in `onReady()` (ohne `sendTo` während Init)
 
 ### 0.2.17 (2026-06-24)
 * **Fix:** Globale `throw`-Handler entfernt — blockierten States-DB-Init nach Objects-DB (Startup-Hänger)
