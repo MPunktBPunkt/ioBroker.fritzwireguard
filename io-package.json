@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.14",
+    "version": "0.2.15",
     "news": {
+      "0.2.15": {
+        "en": "Fix: defer message handler until onReady to prevent admin textSendTo blocking startup; startup diagnostics",
+        "de": "Fix: message-Handler erst in onReady — verhindert dass Admin textSendTo den Start blockiert; Startup-Diagnose"
+      },
       "0.2.14": {
         "en": "New Quick Start tab with connection test, Web-UI link, multiline WG config, help texts and subnet conflict guide",
         "de": "Neuer Schnellstart-Tab mit Verbindungstest, Web-UI-Link, Mehrzeilen-WG-Config, Hilfetexten und Subnetz-Konflikt-Hinweis"
