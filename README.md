@@ -1,6 +1,6 @@
 # ioBroker FritzWireguard Adapter
 
-[![Version](https://img.shields.io/badge/version-0.2.10-blue.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
+[![Version](https://img.shields.io/badge/version-0.2.14-blue.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D16-brightgreen.svg)](https://nodejs.org)
 [![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)](https://github.com/MPunktBPunkt/iobroker.fritzwireguard)
@@ -74,19 +74,70 @@ iobroker add fritzwireguard
 
 ---
 
+## Schnellstart (5 Schritte)
+
+> **Tipp:** Die Einrichtung am **Desktop-PC** im ioBroker-Admin durchführen — die WireGuard-Config
+> ist mehrzeilig und auf dem Handy schwer einzufügen.
+
+1. **Tab Schnellstart / WireGuard:** Komplette `.conf` der FritzBox einfügen.
+   **Auto-Connect** und **Auto-Reconnect** aktivieren ✅
+2. **Tab Verbindung:** TR-064-Zugangsdaten der **entfernten** FritzBox (optional, aber empfohlen)
+3. **Tab Port-Tunnel:** Weiterleitung anlegen, z. B. `127.0.0.1:8085 → 192.168.178.30:80`
+4. **Speichern** und Adapter-Instanz **neu starten**
+5. **Tab Schnellstart → „Verbindung testen"** oder **Web-UI öffnen** (`http://<ioBroker-IP>:8094/`)
+
+### Kostal-Wechselrichter im entfernten Netz
+
+| Wo | Was eintragen |
+|----|---------------|
+| **Port-Tunnel → Ziel-IP** | `192.168.178.30` (IP des Wechselrichters im Ferne Netz) |
+| **Port-Tunnel → Ziel-Port** | `80` (HTTP) oder `443` (HTTPS) |
+| **Port-Tunnel → Lokaler Port** | z. B. `8085` (frei wählbar) |
+| **Tab Verbindung → FritzBox IP** | `192.168.178.1` (FritzBox am Standort — **nicht** die Wechselrichter-IP!) |
+| **Kostal-Adapter → Host** | `127.0.0.1` |
+| **Kostal-Adapter → Port** | `8085` (gleich wie Lokaler Port im Tunnel) |
+
+```
+[Kostal-Adapter] → 127.0.0.1:8085 → [Tunnel] → [VPN] → 192.168.178.30:80
+```
+
+### Gleiches Subnetz lokal und remote (192.168.178.x)
+
+Wenn **beide** FritzBoxen `192.168.178.0/24` nutzen (z. B. ioBroker unter `192.168.178.113`
+und Wechselrichter unter `192.168.178.30`), darf **nicht** das ganze Subnetz geroutet werden.
+
+Statt `AllowedIPs = 192.168.178.0/24` in der WireGuard-Config nur die benötigten Hosts eintragen:
+
+```ini
+AllowedIPs = 192.168.178.30/32, 192.168.178.1/32
+```
+
+| IP | Bedeutung |
+|----|-----------|
+| `192.168.178.30/32` | Wechselrichter im entfernten Netz |
+| `192.168.178.1/32` | FritzBox am entfernten Standort (TR-064, optional) |
+
+So bleibt dein **lokales** Netz (`192.168.178.113` usw.) erreichbar, während nur der
+Wechselrichter durch den VPN-Tunnel geht.
+
+---
+
 ## Konfiguration
 
-Nach der Installation im ioBroker Admin → **Adapter → FritzWireguard** → Instanz anlegen:
+Nach der Installation im ioBroker Admin → **Adapter → FritzWireguard** → Instanz anlegen.
+
+Der Tab **Schnellstart** enthält eine Checkliste, Live-Statusanzeige, **„Verbindung testen"**
+und einen Link zur **Web-UI**.
 
 ### Tab: Verbindung
 
 | Einstellung     | Standard        | Beschreibung                             |
 |-----------------|-----------------|------------------------------------------|
-| FritzBox IP     | `192.168.178.1` | IP der FritzBox im VPN-Netz              |
+| FritzBox IP     | `192.168.178.1` | IP der **FritzBox** am entfernten Standort — nicht die Wechselrichter-IP |
 | TR-064 Port     | `49000`         | TR-064 Port (FritzBox Standard)          |
-| Benutzername    | –               | TR-064 Benutzername                      |
-| Passwort        | –               | TR-064 Passwort                          |
-| Web-UI Port     | `8094`          | Port der Browser-Oberfläche             |
+| Benutzername    | –               | TR-064 Benutzername (optional für reinen Kostal-Tunnel) |
+| Passwort        | –               | TR-064 Passwort (optional)                 |
+| Web-UI Port     | `8094`          | Port der Adapter-Web-Oberfläche zum Testen |
 | Poll-Intervall  | `60`            | Abfrage-Intervall in Sekunden (min. 30)  |
 
 ### Tab: WireGuard
@@ -123,18 +174,79 @@ Netz zu verbinden, ohne den restlichen Traffic zu beeinflussen.
 |----------------|---------------------------------------------------------------|
 | Name           | Bezeichnung des Tunnels (z. B. „Kostal Piko")                 |
 | Lokaler Port   | Port auf `127.0.0.1`, den der andere Adapter anspricht        |
-| Ziel-IP        | IP des Geräts im entfernten Netz (z. B. `192.168.178.55`)    |
+| Ziel-IP        | IP des Geräts im entfernten Netz (z. B. `192.168.178.30`)   |
 | Ziel-Port      | Port am Zielgerät (z. B. `80` für HTTP, `502` für Modbus)    |
 | Aktiv          | Tunnel aktivieren                                             |
 
 **Beispiel: Kostal Piko Wechselrichter im entfernten Netz**
 
 ```
-Tunnel:       Lokaler Port 8085 → 192.168.178.55:80
-Adapter:      Kostal Piko → Host: 127.0.0.1 | Port: 8085
+Tunnel:       Lokaler Port 8085 → 192.168.178.30:80
+Adapter:      Kostal → Host: 127.0.0.1 | Port: 8085
 Ergebnis:     Kostal-Adapter erreicht den Wechselrichter über VPN
               Alle anderen Adapter bleiben im lokalen Netz
 ```
+
+> **Nach Tunnel-Änderungen:** Speichern und Adapter neu starten (oder in der Web-UI
+> unter Tab „Tunnel" → „Tunnel neu starten").
+
+---
+
+## Verbindung testen
+
+### Im ioBroker-Admin (empfohlen)
+
+1. Tab **Schnellstart** öffnen
+2. **„Verbindung testen"** klicken — prüft WireGuard, TR-064 und Tunnel
+3. **Live-Status** zeigt den aktuellen Zustand unterhalb des Buttons
+4. **„Web-UI öffnen"** öffnet die Monitoring-Oberfläche in einem neuen Tab
+
+### In der Web-UI
+
+Im Browser: `http://<ioBroker-IP>:8094/` (oder Button im Admin)
+
+| Tab          | Zum Testen nutzen                                              |
+|--------------|----------------------------------------------------------------|
+| 📊 Daten     | WireGuard-Status „Verbunden" / „Getrennt"                      |
+| 🔌 Nodes     | Geräteliste im entfernten Netz (Wechselrichter-IP finden)      |
+| 🔀 Tunnel    | Tunnel „Aktiv", Traffic-Zähler steigen bei Verbindung          |
+| 📋 Logs      | Filter `WG` und `TUNNEL` für Fehlerdetails                     |
+| ⚙️ System    | Buttons **Verbinden**, **Trennen**, **Jetzt abfragen**         |
+
+### Manueller Kostal-Test (SSH auf ioBroker-Host)
+
+```bash
+# VPN-Status
+sudo wg show
+
+# Wechselrichter über Tunnel erreichen (nach Tunnel-Konfiguration)
+curl -v http://127.0.0.1:8085/
+```
+
+### ioBroker-Datenpunkte
+
+```
+fritzwireguard.0.wireguard.status    → "connected"
+fritzwireguard.0.info.connection     → true
+```
+
+---
+
+## Fehlerbehebung
+
+| Symptom | Ursache | Lösung |
+|---------|---------|--------|
+| WireGuard „getrennt" | Auto-Connect deaktiviert | Tab WireGuard: beide Checkboxen ✅ |
+| `wg-quick up: Permission denied` | Keine sudo-Rechte | sudoers einrichten (siehe Voraussetzungen) |
+| WireGuard-Config leer / unsichtbar | Mobile UI | Config am Desktop-PC einfügen (`minRows`-Textarea) |
+| Tunnel leer auf dem Handy | Tabellen-Rendering | Port-Tunnel am Desktop konfigurieren |
+| Lokales Netz nicht erreichbar | Gleiches Subnetz `192.168.178.x` | `AllowedIPs` auf `/32`-Hosts beschränken |
+| Kostal timeout | Tunnel nicht aktiv / falsche IP | Ziel-IP `192.168.178.30` im **Tunnel**, nicht im Kostal-Adapter |
+| TR-064 Fehler | Falsche Zugangsdaten | Optional — für Kostal-Tunnel nicht zwingend nötig |
+| Adapter startet nicht | Alte Version | Mindestens v0.2.14 installieren |
+| Docker/Synology | WireGuard nicht im Container | WireGuard muss auf dem **Host-System** laufen |
+
+**Debug-Log:** `/tmp/fritzwireguard-debug.log` auf dem ioBroker-Host.
 
 ---
 
@@ -209,6 +321,17 @@ iobroker restart fritzwireguard
 ```
 
 ## Changelog
+
+### 0.2.14 (2026-06-24)
+* **Neu:** Tab „Schnellstart" mit Checkliste, Live-Status, „Verbindung testen" und Web-UI-Link
+* **Neu:** Message-Handler für `testConnection`, `getConnectionStatus`, `openWebUI`
+* **Verbessert:** WireGuard-Config als Mehrzeilen-Textarea (`minRows: 12`)
+* **Verbessert:** Hilfetexte, Kostal-Beispiel und Subnetz-Konflikt-Hinweis in Admin-UI
+* **Verbessert:** README mit Schnellstart, Fehlerbehebung und Subnetz-Dokumentation
+* **Fix:** `wg-quick`/`wg` nutzen jetzt `sudo` (mit Fallback ohne sudo)
+
+### 0.2.13 (2026-03-15)
+* **Fix:** `module.parent` Export-Pattern für Node 14+
 
 ### 0.2.10 (2026-03-15)
 * **Debug:** `console.log` + `uncaughtException` Handler für Startup-Diagnose; GitHub URLs korrigiert (Kleinschreibung)
