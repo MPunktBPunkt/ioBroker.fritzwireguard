@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.22",
+    "version": "0.2.23",
     "news": {
+      "0.2.23": {
+        "en": "Fix: sanitize Interface Address /24 to /32 — prevents same-subnet routing lockout",
+        "de": "Fix: Interface-Address /24 wird zu /32 — verhindert Subnetz-Routing-Lockout bei gleichem Netz"
+      },
       "0.2.22": {
         "en": "Fix: AllowedIPs narrowing excludes local FritzBox IP — only tunnel target hosts (/32)",
         "de": "Fix: AllowedIPs-Einschraenkung ohne lokale FritzBox — nur Tunnel-Ziel-Hosts (/32)"
