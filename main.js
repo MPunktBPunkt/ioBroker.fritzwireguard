@@ -10,10 +10,12 @@ _dbg('=== main.js geladen ===');
 
 process.on('uncaughtException', function(e) {
     _dbg('uncaughtException: ' + e.message + '\n' + e.stack);
-    // NICHT process.exit() aufrufen - adapter-core soll selbst entscheiden
+    // Weiterwerfen — sonst haengt der Prozess nach Objects-Init ohne Fehlermeldung
+    throw e;
 });
-process.on('unhandledRejection', function(reason, promise) {
+process.on('unhandledRejection', function(reason) {
     _dbg('unhandledRejection: ' + (reason && reason.stack ? reason.stack : String(reason)));
+    throw reason;
 });
 
 const utils = require('@iobroker/adapter-core');
@@ -698,7 +700,7 @@ class FritzWireguard extends utils.Adapter {
 
     _json(res, obj) { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(obj)); }
 
-    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.15'; } }
+    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.16'; } }
 
     // ── Web-UI ────────────────────────────────────────────────────────────────
     _buildUI() {

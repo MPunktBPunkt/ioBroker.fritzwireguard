@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.15",
+    "version": "0.2.16",
     "news": {
+      "0.2.16": {
+        "en": "Fix: rethrow uncaughtException/unhandledRejection instead of swallowing — prevented silent hang after Objects DB init",
+        "de": "Fix: uncaughtException/unhandledRejection weiterwerfen statt schlucken — verhinderte stilles Haengen nach Objects-DB-Init"
+      },
       "0.2.15": {
         "en": "Fix: defer message handler until onReady to prevent admin textSendTo blocking startup; startup diagnostics",
         "de": "Fix: message-Handler erst in onReady — verhindert dass Admin textSendTo den Start blockiert; Startup-Diagnose"
