@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.13",
+    "version": "0.2.14",
     "news": {
+      "0.2.14": {
+        "en": "New Quick Start tab with connection test, Web-UI link, multiline WG config, help texts and subnet conflict guide",
+        "de": "Neuer Schnellstart-Tab mit Verbindungstest, Web-UI-Link, Mehrzeilen-WG-Config, Hilfetexten und Subnetz-Konflikt-Hinweis"
+      },
       "0.2.13": {
         "en": "Fix: module.parent is deprecated/undefined in Node 14+ - back to require.main !== module; debug log for export path",
         "de": "Fix: module.parent ist deprecated/undefined in Node 14+ - zurueck zu require.main !== module; Debug-Log fuer Export-Pfad"

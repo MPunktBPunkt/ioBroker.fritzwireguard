@@ -87,10 +87,21 @@ function sanitizeWgConfig(raw) {
 
 // ─── WireGuard System-Calls ───────────────────────────────────────────────────
 
+function execWg(cmd) {
+    return new Promise((resolve, reject) => {
+        exec('sudo ' + cmd + ' 2>&1', (err, stdout) => {
+            if (!err) return resolve(stdout || '');
+            exec(cmd + ' 2>&1', (err2, stdout2) => {
+                if (err2) return reject(new Error(stdout2 || stdout || err2.message));
+                resolve(stdout2 || '');
+            });
+        });
+    });
+}
+
 function wgStatus(iface) {
     return new Promise(resolve => {
-        exec('wg show ' + iface, (err, stdout) => {
-            if (err) return resolve({ connected: false, peers: [] });
+        execWg('wg show ' + iface).then(stdout => {
             const peers = [];
             for (const block of stdout.split(/\n\n/)) {
                 if (!block.startsWith('peer:')) continue;
@@ -103,24 +114,20 @@ function wgStatus(iface) {
                 });
             }
             resolve({ connected: true, peers });
-        });
+        }).catch(() => resolve({ connected: false, peers: [] }));
     });
 }
 
 function wgUp(cfgPath) {
-    return new Promise((resolve, reject) => {
-        exec('wg-quick up ' + cfgPath + ' 2>&1', (err, out) => err ? reject(new Error(out || err.message)) : resolve(out));
-    });
+    return execWg('wg-quick up ' + cfgPath);
 }
 
 function wgDown(cfgPath) {
     return new Promise((resolve) => {
-        // Timeout: wg-quick down darf max 4s blockieren
         const timer = setTimeout(() => resolve('timeout'), 4000);
-        exec('wg-quick down ' + cfgPath + ' 2>&1', (_err, out) => {
-            clearTimeout(timer);
-            resolve(out || '');
-        });
+        execWg('wg-quick down ' + cfgPath)
+            .then(out => { clearTimeout(timer); resolve(out || ''); })
+            .catch(() => { clearTimeout(timer); resolve(''); });
     });
 }
 
@@ -223,7 +230,174 @@ class FritzWireguard extends utils.Adapter {
         this._tunnelMgr = null;
         this.on('ready',       this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
+        this.on('message',     this.onMessage.bind(this));
         this.on('unload',      this.onUnload.bind(this));
+    }
+
+    _cfgFromMessage(msg) {
+        const m = msg || {};
+        return {
+            ...this.config,
+            wgConfig:       m.wgConfig       !== undefined ? m.wgConfig       : this.config.wgConfig,
+            fritzHost:      m.fritzHost      !== undefined ? m.fritzHost      : this.config.fritzHost,
+            fritzPort:      m.fritzPort      !== undefined ? m.fritzPort      : this.config.fritzPort,
+            fritzUser:      m.fritzUser      !== undefined ? m.fritzUser      : this.config.fritzUser,
+            fritzPass:      m.fritzPass      !== undefined ? m.fritzPass      : this.config.fritzPass,
+            webPort:        m.webPort        !== undefined ? m.webPort        : this.config.webPort,
+            autoConnect:    m.autoConnect    !== undefined ? m.autoConnect    : this.config.autoConnect,
+            tunnels:        m.tunnels        !== undefined ? m.tunnels        : this.config.tunnels
+        };
+    }
+
+    _writeTempConfigFrom(cfg) {
+        const { cfg: sanitized, warnings } = sanitizeWgConfig(cfg.wgConfig || '');
+        for (const w of warnings) this._log('WARN', 'WG', w);
+        const dir  = path.join(os.tmpdir(), 'fritzwireguard');
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
+        const file = path.join(dir, 'wg-fritzwireguard.conf');
+        fs.writeFileSync(file, sanitized, { mode: 0o600 });
+        return file;
+    }
+
+    async _runConnectionChecks(cfg, tryConnect) {
+        const lines = [];
+        let wgOk = false;
+        let tr064Ok = false;
+        let tunnelCount = 0;
+
+        if (!cfg.wgConfig || !cfg.wgConfig.trim()) {
+            lines.push('<span style="color:#f44336">&#10008; WireGuard-Config fehlt</span>');
+            return { wgOk, tr064Ok, tunnelCount, lines, level: 'fail' };
+        }
+
+        let wgState = await wgStatus('wg-fritzwireguard');
+        if (!wgState.connected && tryConnect) {
+            try {
+                await wgUp(this._writeTempConfigFrom(cfg));
+                wgState = await wgStatus('wg-fritzwireguard');
+            } catch (e) {
+                lines.push('<span style="color:#f44336">&#10008; WireGuard: ' + this._esc(e.message) + '</span>');
+            }
+        }
+
+        if (wgState.connected) {
+            wgOk = true;
+            const hs = wgState.peers[0] ? wgState.peers[0].handshake : 'unbekannt';
+            lines.push('<span style="color:#4caf50">&#10004; WireGuard verbunden</span> (Handshake: ' + this._esc(hs) + ')');
+        } else {
+            lines.push('<span style="color:#f44336">&#10008; WireGuard nicht verbunden</span> — Auto-Connect aktivieren? sudo/wg-quick pruefen.');
+        }
+
+        if (cfg.fritzUser && cfg.fritzPass) {
+            try {
+                const h = cfg.fritzHost || '192.168.178.1';
+                const p = parseInt(cfg.fritzPort) || 49000;
+                const r = await soapRequest(h, p,
+                    '/tr064/upnp/control/deviceinfo',
+                    'urn:dslforum-org:service:DeviceInfo:1#GetInfo',
+                    '<u:GetInfo xmlns:u="urn:dslforum-org:service:DeviceInfo:1"/>',
+                    cfg.fritzUser, cfg.fritzPass);
+                const model = parseXml(r, 'NewModelName');
+                if (model) {
+                    tr064Ok = true;
+                    lines.push('<span style="color:#4caf50">&#10004; TR-064 erreichbar</span> (' + this._esc(model) + ')');
+                } else {
+                    lines.push('<span style="color:#ff9800">&#9888; TR-064: Antwort ohne Modellname</span>');
+                }
+            } catch (e) {
+                lines.push('<span style="color:#ff9800">&#9888; TR-064: ' + this._esc(e.message) + '</span> (optional fuer Kostal-Tunnel)');
+            }
+        } else {
+            lines.push('<span style="color:#8899bb">&#9432; TR-064 nicht konfiguriert (optional)</span>');
+        }
+
+        const tunnels = (cfg.tunnels || []).filter(t => t && t.enabled);
+        tunnelCount = tunnels.length;
+        if (tunnelCount) {
+            const running = this._tunnelMgr
+                ? this._tunnelMgr.statusAll(cfg.tunnels).filter(t => t.enabled && t.running).length
+                : 0;
+            lines.push('<span style="color:' + (running ? '#4caf50' : '#ff9800') + '">' +
+                (running ? '&#10004;' : '&#9888;') + ' Tunnel: ' + running + '/' + tunnelCount + ' aktiv</span>');
+            for (const t of tunnels) {
+                lines.push('&nbsp;&nbsp;&#8594; 127.0.0.1:' + t.localPort + ' &rarr; ' +
+                    this._esc(t.remoteHost) + ':' + t.remotePort + ' (' + this._esc(t.name || '') + ')');
+            }
+        } else {
+            lines.push('<span style="color:#ff9800">&#9888; Kein aktiver Port-Tunnel konfiguriert</span>');
+        }
+
+        if (!cfg.autoConnect) {
+            lines.push('<span style="color:#ff9800">&#9888; Auto-Connect ist deaktiviert</span>');
+        }
+
+        let level = 'fail';
+        if (wgOk && tunnelCount > 0) level = tr064Ok || !cfg.fritzUser ? 'ok' : 'partial';
+        else if (wgOk) level = 'partial';
+
+        return { wgOk, tr064Ok, tunnelCount, lines, level };
+    }
+
+    _esc(s) {
+        return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    async onMessage(obj) {
+        if (!obj || !obj.command) return false;
+
+        try {
+            switch (obj.command) {
+                case 'getConnectionStatus': {
+                    const cfg = this._cfgFromMessage(obj.message);
+                    const r = await this._runConnectionChecks(cfg, false);
+                    if (obj.callback) {
+                        this.sendTo(obj.from, obj.command, {
+                            text: r.lines.join('<br>'),
+                            style: { fontSize: '0.9rem', lineHeight: '1.6' }
+                        }, obj.callback);
+                    }
+                    return true;
+                }
+                case 'testConnection': {
+                    const cfg = this._cfgFromMessage(obj.message);
+                    const r = await this._runConnectionChecks(cfg, true);
+                    if (obj.callback) {
+                        this.sendTo(obj.from, obj.command, {
+                            result: r.level,
+                            text: r.lines.join('\n'),
+                            message: r.lines.map(l => l.replace(/<[^>]+>/g, '')).join(' ')
+                        }, obj.callback);
+                    }
+                    await this._poll();
+                    return true;
+                }
+                case 'openWebUI': {
+                    const cfg = this._cfgFromMessage(obj.message);
+                    const port = parseInt(cfg.webPort) || 8094;
+                    let host = '127.0.0.1';
+                    const origin = obj.message && (obj.message._originIp || obj.message._origin);
+                    if (origin) {
+                        try {
+                            const u = new URL(origin.includes('://') ? origin : 'http://' + origin);
+                            host = u.hostname;
+                        } catch (_) {}
+                    }
+                    if (obj.callback) {
+                        this.sendTo(obj.from, obj.command, {
+                            openUrl: 'http://' + host + ':' + port + '/',
+                            window: '_blank'
+                        }, obj.callback);
+                    }
+                    return true;
+                }
+            }
+        } catch (e) {
+            if (obj.callback) {
+                this.sendTo(obj.from, obj.command, { error: 'fail', message: e.message }, obj.callback);
+            }
+            return true;
+        }
+        return false;
     }
 
     // Logging
@@ -511,7 +685,7 @@ class FritzWireguard extends utils.Adapter {
 
     _json(res, obj) { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(obj)); }
 
-    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.13'; } }
+    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.14'; } }
 
     // ── Web-UI ────────────────────────────────────────────────────────────────
     _buildUI() {
@@ -783,7 +957,7 @@ class FritzWireguard extends utils.Adapter {
         const wgDisconnect = this.config && this.config.wgDisconnectOnStop;
         const cfgPath = this._wgCfgPath;
         if (wgDisconnect && cfgPath) {
-            exec('wg-quick down ' + cfgPath + ' 2>/dev/null', () => {});
+            execWg('wg-quick down ' + cfgPath).catch(() => {});
         }
     }
 }
