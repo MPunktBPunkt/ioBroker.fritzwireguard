@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.20",
+    "version": "0.2.21",
     "news": {
+      "0.2.21": {
+        "en": "Fix: WireGuard interface name max 15 chars (fritzwg); sudo -n with full paths; auto-narrow AllowedIPs /24 to tunnel hosts",
+        "de": "Fix: WG-Interface-Name max 15 Zeichen (fritzwg); sudo -n mit Vollpfaden; AllowedIPs /24 automatisch auf Tunnel-Hosts eingeschraenkt"
+      },
       "0.2.19": {
         "en": "Fix: defer loading lib/adapter.js until onReady via lib/bind.js — fixes States-DB init hang",
         "de": "Fix: lib/adapter.js erst in onReady laden (lib/bind.js) — behebt States-DB-Init-Hänger"
