@@ -243,7 +243,7 @@ fritzwireguard.0.info.connection     → true
 | Lokales Netz nicht erreichbar | Gleiches Subnetz `192.168.178.x` | `AllowedIPs` auf `/32`-Hosts beschränken |
 | Kostal timeout | Tunnel nicht aktiv / falsche IP | Ziel-IP `192.168.178.30` im **Tunnel**, nicht im Kostal-Adapter |
 | TR-064 Fehler | Falsche Zugangsdaten | Optional — für Kostal-Tunnel nicht zwingend nötig |
-| Adapter startet nicht | Alte Version | Mindestens v0.2.14 installieren |
+| Adapter startet nicht | Alte Version | Mindestens v0.2.16 installieren |
 | Docker/Synology | WireGuard nicht im Container | WireGuard muss auf dem **Host-System** laufen |
 
 **Debug-Log:** `/tmp/fritzwireguard-debug.log` auf dem ioBroker-Host.
@@ -321,6 +321,15 @@ iobroker restart fritzwireguard
 ```
 
 ## Changelog
+
+### 0.2.16 (2026-06-24)
+* **Fix:** `uncaughtException`/`unhandledRejection` werden wieder geworfen — verhindert stilles Hängen nach Objects-DB-Init
+* **Fix:** Message-Handler erst in `onReady()` — Admin `textSendTo` blockiert Start nicht mehr
+* **Debug:** Startup-Diagnose im Log (`/tmp/fritzwireguard-debug.log`)
+
+### 0.2.15 (2026-06-24)
+* **Fix:** Message-Handler aus Constructor entfernt, Registrierung erst in `onReady()`
+* **Debug:** Startup-Timer (10/30/60/120s) für `adapterReady`-Status
 
 ### 0.2.14 (2026-06-24)
 * **Neu:** Tab „Schnellstart" mit Checkliste, Live-Status, „Verbindung testen" und Web-UI-Link
