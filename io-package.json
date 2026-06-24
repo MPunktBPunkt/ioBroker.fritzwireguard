@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.21",
+    "version": "0.2.22",
     "news": {
+      "0.2.22": {
+        "en": "Fix: AllowedIPs narrowing excludes local FritzBox IP — only tunnel target hosts (/32)",
+        "de": "Fix: AllowedIPs-Einschraenkung ohne lokale FritzBox — nur Tunnel-Ziel-Hosts (/32)"
+      },
       "0.2.21": {
         "en": "Fix: WireGuard interface name max 15 chars (fritzwg); sudo -n with full paths; auto-narrow AllowedIPs /24 to tunnel hosts",
         "de": "Fix: WG-Interface-Name max 15 Zeichen (fritzwg); sudo -n mit Vollpfaden; AllowedIPs /24 automatisch auf Tunnel-Hosts eingeschraenkt"
