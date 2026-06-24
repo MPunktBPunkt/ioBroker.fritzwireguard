@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.18",
+    "version": "0.2.19",
     "news": {
+      "0.2.19": {
+        "en": "Fix: defer loading lib/adapter.js until onReady via lib/bind.js — fixes States-DB init hang",
+        "de": "Fix: lib/adapter.js erst in onReady laden (lib/bind.js) — behebt States-DB-Init-Hänger"
+      },
       "0.2.18": {
         "en": "Fix: lazy-load adapter implementation via thin main.js loader — fixes States-DB startup hang",
         "de": "Fix: Adapter-Implementierung per duennem main.js-Loader lazy laden — behebt States-DB-Startup-Hänger"

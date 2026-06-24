@@ -1,9 +1,17 @@
 'use strict';
 
-// Duenner Loader: schwere Implementierung erst beim Instanz-Start laden.
-// Verhindert, dass grosser Modul-Code die adapter-core DB-Init blockiert.
+const utils = require('@iobroker/adapter-core');
+
+class FritzWireguard extends utils.Adapter {
+    constructor(options = {}) {
+        super({ ...options, name: 'fritzwireguard' });
+    }
+}
+
 function createAdapter(options) {
-    return require('./lib/adapter.js').createAdapter(options);
+    const adapter = new FritzWireguard(options);
+    require('./lib/bind.js').bindLogic(adapter);
+    return adapter;
 }
 
 if (require.main !== module) {
