@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.16",
+    "version": "0.2.17",
     "news": {
+      "0.2.17": {
+        "en": "Fix: remove throw in global exception handlers (broke States-DB init); message handler early with no sendTo during startup",
+        "de": "Fix: throw in globalen Exception-Handlern entfernt (blockierte States-DB-Init); Message-Handler frueh ohne sendTo beim Start"
+      },
       "0.2.16": {
         "en": "Fix: rethrow uncaughtException/unhandledRejection instead of swallowing — prevented silent hang after Objects DB init",
         "de": "Fix: uncaughtException/unhandledRejection weiterwerfen statt schlucken — verhinderte stilles Haengen nach Objects-DB-Init"

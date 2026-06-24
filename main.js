@@ -2,21 +2,16 @@
 
 // File-basiertes Debug-Logging (sichtbar unabhaengig von ioBroker)
 const _fs0 = require('fs');
+const _DBG_PATH = '/tmp/fritzwireguard-debug.log';
 const _dbg = (msg) => {
-    try { _fs0.appendFileSync('/tmp/fritzwireguard-debug.log',
-        new Date().toISOString() + ' ' + msg + '\n'); } catch(_) {}
+    try { _fs0.appendFileSync(_DBG_PATH,
+        new Date().toISOString() + ' ' + msg + '\n'); } catch (_) {}
 };
+try {
+    const st = _fs0.statSync(_DBG_PATH);
+    if (st.size > 1024 * 1024) _fs0.writeFileSync(_DBG_PATH, '');
+} catch (_) {}
 _dbg('=== main.js geladen ===');
-
-process.on('uncaughtException', function(e) {
-    _dbg('uncaughtException: ' + e.message + '\n' + e.stack);
-    // Weiterwerfen — sonst haengt der Prozess nach Objects-Init ohne Fehlermeldung
-    throw e;
-});
-process.on('unhandledRejection', function(reason) {
-    _dbg('unhandledRejection: ' + (reason && reason.stack ? reason.stack : String(reason)));
-    throw reason;
-});
 
 const utils = require('@iobroker/adapter-core');
 _dbg('utils.Adapter type: ' + typeof utils.Adapter);
@@ -235,7 +230,8 @@ class FritzWireguard extends utils.Adapter {
         }, sec * 1000));
         this.on('ready',       this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
-        // message-Handler erst in onReady — Admin textSendTo waehrend Init blockierte sonst DB-Start
+        // Handler frueh registrieren; onMessage darf waehrend Init KEIN sendTo() (braucht States-DB)
+        this.on('message',     this.onMessage.bind(this));
         this.on('unload',      this.onUnload.bind(this));
     }
 
@@ -351,12 +347,7 @@ class FritzWireguard extends utils.Adapter {
         if (!obj || !obj.command) return false;
 
         if (!this.adapterReady) {
-            if (obj.callback) {
-                this.sendTo(obj.from, obj.command, {
-                    text: 'Adapter startet noch — bitte kurz warten …',
-                    style: { color: '#ff9800' }
-                }, obj.callback);
-            }
+            // Kein sendTo() — blockiert States-DB-Init (Admin textSendTo waehrend Start)
             return true;
         }
 
@@ -700,7 +691,7 @@ class FritzWireguard extends utils.Adapter {
 
     _json(res, obj) { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(obj)); }
 
-    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.16'; } }
+    _version() { try { return require('./package.json').version; } catch (_) { return '0.2.17'; } }
 
     // ── Web-UI ────────────────────────────────────────────────────────────────
     _buildUI() {
@@ -915,7 +906,6 @@ class FritzWireguard extends utils.Adapter {
                 this._startupDiag = null;
             }
             _dbg('onReady() gestartet, config: ' + JSON.stringify({webPort: this.config && this.config.webPort, autoConnect: this.config && this.config.autoConnect}));
-            this.on('message', this.onMessage.bind(this));
             this._log('SYSTEM', 'SYSTEM', 'FritzWireguard v' + this._version() + ' startet \u2026');
             await this._initStates();
 
