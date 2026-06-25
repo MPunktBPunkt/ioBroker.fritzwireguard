@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.23",
+    "version": "0.2.24",
     "news": {
+      "0.2.24": {
+        "en": "Fix: reload WG on config change (fritzwg already exists), handshake-based connection status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "de": "Fix: WG bei Config-Aenderung neu laden, Verbindung erst mit Handshake, IPv4-/24-Sanitizer, TR-064-Hinweis bei gleichem Subnetz"
+      },
       "0.2.23": {
         "en": "Fix: sanitize Interface Address /24 to /32 — prevents same-subnet routing lockout",
         "de": "Fix: Interface-Address /24 wird zu /32 — verhindert Subnetz-Routing-Lockout bei gleichem Netz"
