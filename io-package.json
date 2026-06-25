@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.24",
+    "version": "0.2.25",
     "news": {
+      "0.2.25": {
+        "en": "Fix Web-UI WG byte stats (KiB/MiB), refresh on tab switch, admin plain-text help, test button icon",
+        "de": "Fix Web-UI WG-Byte-Statistik (KiB/MiB), Refresh bei Tab-Wechsel, Admin-Hilfe als Klartext, Test-Button-Icon"
+      },
       "0.2.24": {
         "en": "Fix: reload WG on config change (fritzwg already exists), handshake-based connection status, IPv4/24 sanitizer, TR-064 same-subnet hint",
         "de": "Fix: WG bei Config-Aenderung neu laden, Verbindung erst mit Handshake, IPv4-/24-Sanitizer, TR-064-Hinweis bei gleichem Subnetz"
