@@ -1,49 +1,86 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.26",
+    "version": "0.2.27",
     "news": {
+      "0.2.27": {
+        "en": "Repo-checker prep: translations, licenseInformation, tier, Node 22, admin/js-controller deps, README install via adapter list, jsonConfig sizes, node: imports",
+        "de": "Repo-Checker-Vorbereitung: Übersetzungen, licenseInformation, tier, Node 22, admin/js-controller-Deps, README-Installation über Adapterliste, jsonConfig-Größen, node:-Imports",
+        "ru": "Подготовка к repo-checker: переводы, licenseInformation, tier, Node 22, зависимости admin/js-controller, установка из списка адаптеров, размеры jsonConfig, импорты node:",
+        "pt": "Preparação repo-checker: traduções, licenseInformation, tier, Node 22, deps admin/js-controller, instalação pela lista de adapters, tamanhos jsonConfig, imports node:",
+        "nl": "Repo-checker voorbereiding: vertalingen, licenseInformation, tier, Node 22, admin/js-controller deps, installatie via adapterlijst, jsonConfig-groottes, node:-imports",
+        "fr": "Préparation repo-checker : traductions, licenseInformation, tier, Node 22, deps admin/js-controller, installation via liste d’adapters, tailles jsonConfig, imports node:",
+        "it": "Preparazione repo-checker: traduzioni, licenseInformation, tier, Node 22, dipendenze admin/js-controller, installazione da lista adapter, dimensioni jsonConfig, import node:",
+        "es": "Preparación repo-checker: traducciones, licenseInformation, tier, Node 22, deps admin/js-controller, instalación desde lista de adapters, tamaños jsonConfig, imports node:",
+        "pl": "Przygotowanie pod repo-checker: tłumaczenia, licenseInformation, tier, Node 22, zależności admin/js-controller, instalacja z listy adapterów, rozmiary jsonConfig, importy node:",
+        "uk": "Підготовка до repo-checker: переклади, licenseInformation, tier, Node 22, залежності admin/js-controller, встановлення зі списку адаптерів, розміри jsonConfig, імпорти node:",
+        "zh-cn": "仓库检查准备：翻译、licenseInformation、tier、Node 22、admin/js-controller 依赖、通过适配器列表安装、jsonConfig 尺寸、node: 导入"
+      },
       "0.2.26": {
-        "en": "Fix WG status under Node/setcap/sudo-rs (empty wg show); project structure aligned with ioBroker AI developer guide (LICENSE, CI, i18n, English README)",
-        "de": "Fix WG-Status unter Node/setcap/sudo-rs (leeres wg show); Projektstruktur an ioBroker AI Developer Guide angepasst (LICENSE, CI, i18n, englisches README)"
+        "en": "Fix WG status under Node/setcap/sudo-rs; align project with ioBroker AI developer guide",
+        "de": "Fix WG-Status unter Node/setcap/sudo-rs; Projekt an ioBroker AI Developer Guide angepasst",
+        "ru": "Исправление статуса WG при Node/setcap/sudo-rs; структура по ioBroker AI developer guide",
+        "pt": "Correção do status WG com Node/setcap/sudo-rs; alinhamento ao guia AI do ioBroker",
+        "nl": "Fix WG-status onder Node/setcap/sudo-rs; project afgestemd op ioBroker AI developer guide",
+        "fr": "Correctif statut WG sous Node/setcap/sudo-rs ; alignement sur le guide AI ioBroker",
+        "it": "Fix stato WG con Node/setcap/sudo-rs; allineamento alla guida AI ioBroker",
+        "es": "Corrección estado WG con Node/setcap/sudo-rs; alineación con guía AI ioBroker",
+        "pl": "Poprawka statusu WG przy Node/setcap/sudo-rs; zgodność z przewodnikiem AI ioBroker",
+        "uk": "Виправлення статусу WG при Node/setcap/sudo-rs; відповідність ioBroker AI developer guide",
+        "zh-cn": "修复 Node/setcap/sudo-rs 下的 WG 状态；按 ioBroker AI 开发指南调整项目"
       },
       "0.2.25": {
-        "en": "Fix Web-UI WG byte stats (KiB/MiB), refresh on tab switch, admin plain-text help, test button icon",
-        "de": "Fix Web-UI WG-Byte-Statistik (KiB/MiB), Refresh bei Tab-Wechsel, Admin-Hilfe als Klartext, Test-Button-Icon"
+        "en": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "de": "Fix Web-UI WG-Byte-Statistik, Refresh bei Tab-Wechsel, Admin-Hilfe, Test-Button-Icon",
+        "ru": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "pt": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "nl": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "fr": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "it": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "es": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "pl": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "uk": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
+        "zh-cn": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon"
       },
       "0.2.24": {
-        "en": "Fix: reload WG on config change (fritzwg already exists), handshake-based connection status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "de": "Fix: WG bei Config-Aenderung neu laden, Verbindung erst mit Handshake, IPv4-/24-Sanitizer, TR-064-Hinweis bei gleichem Subnetz"
-      },
-      "0.2.23": {
-        "en": "Fix: sanitize Interface Address /24 to /32 — prevents same-subnet routing lockout",
-        "de": "Fix: Interface-Address /24 wird zu /32 — verhindert Subnetz-Routing-Lockout bei gleichem Netz"
-      },
-      "0.2.22": {
-        "en": "Fix: AllowedIPs narrowing excludes local FritzBox IP — only tunnel target hosts (/32)",
-        "de": "Fix: AllowedIPs-Einschraenkung ohne lokale FritzBox — nur Tunnel-Ziel-Hosts (/32)"
-      },
-      "0.2.21": {
-        "en": "Fix: WireGuard interface name max 15 chars (fritzwg); sudo -n with full paths; auto-narrow AllowedIPs /24 to tunnel hosts",
-        "de": "Fix: WG-Interface-Name max 15 Zeichen (fritzwg); sudo -n mit Vollpfaden; AllowedIPs /24 automatisch auf Tunnel-Hosts eingeschraenkt"
-      },
-      "0.2.0": {
-        "en": "TCP Tunnel Manager for selective adapter routing through VPN; WireGuard config sanitizer",
-        "de": "TCP Tunnel Manager fuer selektives Adapter-Routing durch VPN; WireGuard Config-Sanitizer"
-      },
-      "0.1.0": {
-        "en": "Initial release",
-        "de": "Erstveroeffentlichung"
+        "en": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "de": "Fix: WG bei Config-Änderung neu laden, Handshake-Status, IPv4-/24-Sanitizer, TR-064-Hinweis gleiches Subnetz",
+        "ru": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "pt": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "nl": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "fr": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "it": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "es": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "pl": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "uk": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
+        "zh-cn": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint"
       }
     },
-    "title": "FritzWireguard",
     "titleLang": {
-      "de": "FritzWireguard - WireGuard VPN zu FritzBox",
-      "en": "FritzWireguard - WireGuard VPN to FritzBox"
+      "en": "FritzWireguard - WireGuard VPN to FritzBox",
+      "de": "FritzWireguard - WireGuard VPN zur FritzBox",
+      "ru": "FritzWireguard - WireGuard VPN к FritzBox",
+      "pt": "FritzWireguard - VPN WireGuard para FritzBox",
+      "nl": "FritzWireguard - WireGuard VPN naar FritzBox",
+      "fr": "FritzWireguard - VPN WireGuard vers FritzBox",
+      "it": "FritzWireguard - VPN WireGuard verso FritzBox",
+      "es": "FritzWireguard - VPN WireGuard a FritzBox",
+      "pl": "FritzWireguard - VPN WireGuard do FritzBox",
+      "uk": "FritzWireguard - WireGuard VPN до FritzBox",
+      "zh-cn": "FritzWireguard - 通过 WireGuard 连接 FritzBox"
     },
     "desc": {
-      "de": "Stellt per WireGuard VPN eine Verbindung zu einer entfernten FritzBox her und liest Geräte, WAN-Status und weitere Daten via TR-064 aus.",
-      "en": "Connects to a remote FritzBox via WireGuard VPN and reads devices, WAN status and more via TR-064."
+      "en": "Connects to a remote FritzBox via WireGuard VPN and reads devices, WAN status and more via TR-064. Includes a TCP tunnel manager for selective remote access.",
+      "de": "Verbindet ioBroker per WireGuard VPN mit einer entfernten FritzBox und liest Geräte, WAN-Status und mehr via TR-064. Inklusive TCP-Tunnel-Manager für selektiven Remote-Zugriff.",
+      "ru": "Подключает ioBroker к удалённой FritzBox через WireGuard VPN и читает устройства, WAN-статус и другое через TR-064. Включает TCP tunnel manager.",
+      "pt": "Liga o ioBroker a uma FritzBox remota via WireGuard VPN e lê dispositivos, estado WAN e mais via TR-064. Inclui gestor de túneis TCP.",
+      "nl": "Verbindt ioBroker via WireGuard VPN met een externe FritzBox en leest apparaten, WAN-status en meer via TR-064. Inclusief TCP-tunnelmanager.",
+      "fr": "Connecte ioBroker à une FritzBox distante via WireGuard VPN et lit appareils, état WAN et plus via TR-064. Inclut un gestionnaire de tunnels TCP.",
+      "it": "Collega ioBroker a una FritzBox remota via WireGuard VPN e legge dispositivi, stato WAN e altro via TR-064. Include gestore tunnel TCP.",
+      "es": "Conecta ioBroker a una FritzBox remota vía WireGuard VPN y lee dispositivos, estado WAN y más vía TR-064. Incluye gestor de túneles TCP.",
+      "pl": "Łączy ioBroker z zdalną FritzBox przez WireGuard VPN i odczytuje urządzenia, status WAN i więcej przez TR-064. Zawiera menedżer tuneli TCP.",
+      "uk": "Підключає ioBroker до віддаленої FritzBox через WireGuard VPN і читає пристрої, WAN-статус тощо через TR-064. Включає TCP tunnel manager.",
+      "zh-cn": "通过 WireGuard VPN 连接远程 FritzBox，并经 TR-064 读取设备、WAN 状态等；含 TCP 隧道管理。"
     },
     "authors": [
       "MPunktBPunkt <martin@bchmnn.de>"
@@ -55,9 +92,7 @@
       "tr-064",
       "network"
     ],
-    "license": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "fritzwireguard.svg",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/MPunktBPunkt/ioBroker.fritzwireguard/main/admin/fritzwireguard.svg",
@@ -71,13 +106,23 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=5.0.0"
+        "js-controller": ">=6.0.11"
       }
     ],
-    "globalDependencies": [],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ],
     "connectionType": "local",
     "dataSource": "poll",
-    "stopTimeout": 10000
+    "stopTimeout": 10000,
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
+    "compact": false
   },
   "native": {
     "webPort": 8094,

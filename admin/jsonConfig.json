@@ -4,39 +4,49 @@
   "items": {
     "quickstart": {
       "type": "panel",
-      "label": "Schnellstart",
+      "label": "quickstart",
       "items": {
         "qsHeader": {
           "type": "header",
-          "text": "Einrichtung in 5 Schritten",
+          "text": "qsHeader",
           "size": 4,
-          "sm": 12
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "qsSteps": {
           "type": "staticText",
-          "text": {
-            "de": "1. WireGuard-Tab: Komplette .conf einfügen. Auto-Connect und Auto-Reconnect aktivieren.\n2. Verbindung-Tab: FritzBox-Zugangsdaten (TR-064) eintragen — optional, aber hilfreich für die Geräteliste.\n3. Port-Tunnel-Tab: Ziel-IP des Geräts (z. B. Wechselrichter 192.168.178.30) und Ziel-Port eintragen.\n4. Speichern und Adapter neu starten.\n5. Verbindung testen (Button unten) oder Web-UI öffnen.\n\nKostal-Adapter: Host 127.0.0.1, Port = Lokaler Port aus dem Tunnel-Tab (z. B. 8085). Die Wechselrichter-IP (192.168.178.30) gehört nur in den Port-Tunnel, nicht in den Kostal-Adapter.",
-            "en": "1. WireGuard tab: Paste complete .conf. Enable Auto-Connect and Auto-Reconnect.\n2. Connection tab: Enter FritzBox TR-064 credentials — optional but useful for device list.\n3. Port-Tunnel tab: Enter target device IP (e.g. inverter 192.168.178.30) and target port.\n4. Save and restart the adapter.\n5. Test connection (button below) or open Web-UI.\n\nKostal adapter: Host 127.0.0.1, port = local tunnel port (e.g. 8085). Inverter IP (192.168.178.30) goes only into the port tunnel, not into the Kostal adapter."
-          },
-          "sm": 12
+          "text": "qsSteps",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "subnetWarn": {
           "type": "staticText",
-          "text": {
-            "de": "⚠ Gleiches Subnetz (192.168.178.x) lokal und remote?\nWenn beide FritzBoxen 192.168.178.0/24 nutzen, setze in der WireGuard-Config statt des ganzen Netzes nur die benötigten Hosts:\nAllowedIPs = 192.168.178.30/32, 192.168.178.31/32\nSo werden nur die Wechselrichter durch den Tunnel geroutet — dein lokales Netz bleibt erreichbar.",
-            "en": "⚠ Same subnet (192.168.178.x) locally and remotely?\nIf both FritzBoxes use 192.168.178.0/24, set only required hosts in WireGuard config instead of the full subnet:\nAllowedIPs = 192.168.178.30/32, 192.168.178.31/32\nThis routes only the inverters through the tunnel — your local network stays reachable."
-          },
-          "sm": 12
+          "text": "subnetWarn",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "statusHeader": {
           "type": "header",
-          "text": "Status & Test",
+          "text": "statusHeader",
           "size": 4,
-          "sm": 12
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "connectionStatus": {
           "type": "textSendTo",
-          "label": "Aktueller Verbindungsstatus",
+          "label": "connectionStatus",
           "command": "getConnectionStatus",
           "container": "html",
           "alsoDependsOn": [
@@ -47,227 +57,274 @@
             "tunnels",
             "autoConnect"
           ],
-          "sm": 12
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "btnTest": {
           "type": "sendTo",
           "command": "testConnection",
-          "label": "Verbindung testen",
+          "label": "btnTest",
           "variant": "contained",
           "icon": "play_arrow",
           "showProcess": true,
           "timeout": 45000,
-          "sm": 12,
-          "md": 6,
           "result": {
-            "ok": {
-              "de": "Verbindung OK",
-              "en": "Connection OK"
-            },
-            "partial": {
-              "de": "Teilweise OK — Details im Status",
-              "en": "Partially OK — see status"
-            },
-            "fail": {
-              "de": "Verbindung fehlgeschlagen",
-              "en": "Connection failed"
-            }
+            "ok": "resultOk",
+            "partial": "resultPartial",
+            "fail": "resultFail"
           },
           "error": {
-            "fail": {
-              "de": "Test fehlgeschlagen",
-              "en": "Test failed"
-            }
-          }
+            "fail": "resultFail"
+          },
+          "xs": 12,
+          "sm": 12,
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "btnWebUI": {
           "type": "sendTo",
           "command": "openWebUI",
-          "label": "Web-UI öffnen",
+          "label": "btnWebUI",
           "variant": "outlined",
           "icon": "web",
           "openUrl": true,
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "webUiHint": {
           "type": "pattern",
-          "label": "Web-UI Adresse",
+          "label": "webUiHint",
           "pattern": "http://<ioBroker-IP>:${data.webPort}/",
           "copyToClipboard": false,
-          "sm": 12
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         }
       }
     },
     "connection": {
       "type": "panel",
-      "label": "Verbindung",
+      "label": "connection",
       "items": {
         "connHelp": {
           "type": "staticText",
-          "text": {
-            "de": "TR-064-Zugangsdaten der entfernten FritzBox (Standort des Wechselrichters). Nur für FritzBox-Daten und Geräteliste — für Kostal-Tunnel optional. Bei gleichem Subnetz 192.168.178.x antwortet TR-064 oft die lokale FritzBox.",
-            "en": "TR-064 credentials of the remote FritzBox (inverter site). Used for FritzBox data and device list — optional for Kostal tunnel only. With same subnet 192.168.178.x TR-064 often hits the local FritzBox."
-          },
-          "sm": 12
+          "text": "connHelp",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "fritzHost": {
           "type": "text",
-          "label": "FritzBox IP (im VPN-Netz)",
+          "label": "fritzHost",
           "default": "192.168.178.1",
-          "help": "IP der FritzBox am Standort des Wechselrichters — meist 192.168.178.1. Nicht die Wechselrichter-IP eintragen!",
+          "help": "fritzHost_help",
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "fritzPort": {
           "type": "number",
-          "label": "TR-064 Port",
+          "label": "fritzPort",
           "default": 49000,
-          "help": "Standard-Port der FritzBox TR-064 Schnittstelle.",
+          "help": "fritzPort_help",
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "fritzUser": {
           "type": "text",
-          "label": "FritzBox Benutzername",
-          "help": "Benutzer mit Recht FRITZ!Box-Einstellungen.",
+          "label": "fritzUser",
+          "help": "fritzUser_help",
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "fritzPass": {
           "type": "password",
-          "label": "FritzBox Passwort",
+          "label": "fritzPass",
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "webPort": {
           "type": "number",
-          "label": "Web-UI Port",
+          "label": "webPort",
           "default": 8094,
-          "help": "Port der Adapter-Web-Oberflaeche zum Testen und Monitoring (Tab Schnellstart: Web-UI oeffnen).",
+          "help": "webPort_help",
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         },
         "pollInterval": {
           "type": "number",
-          "label": "Poll-Intervall (Sekunden, min. 30)",
+          "label": "pollInterval",
           "default": 60,
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         }
       }
     },
     "wireguard": {
       "type": "panel",
-      "label": "WireGuard",
+      "label": "wireguard",
       "items": {
         "wgHelp": {
           "type": "staticText",
-          "text": {
-            "de": "Vollständigen Inhalt der FritzBox-.conf einfügen (am besten am Desktop-PC, nicht am Handy). Nach dem Speichern: Adapter neu starten.",
-            "en": "Paste the complete FritzBox .conf content (preferably on desktop, not mobile). After saving: restart the adapter."
-          },
-          "sm": 12
+          "text": "wgHelp",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "wgConfig": {
           "type": "text",
-          "label": "WireGuard Config (.conf Inhalt)",
-          "sm": 12,
+          "label": "wgConfig",
+          "help": "wgConfig_help",
           "minRows": 12,
           "maxRows": 24,
-          "help": "DNS-Zeilen und 0.0.0.0/0 werden automatisch entfernt. Bei gleichem Subnetz lokal/remote: AllowedIPs auf einzelne Hosts beschraenken (siehe Tab Schnellstart)."
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "autoConnect": {
           "type": "checkbox",
-          "label": "Beim Start automatisch verbinden",
+          "label": "autoConnect",
           "default": true,
-          "help": "Empfohlen: VPN wird beim Adapterstart aufgebaut.",
-          "sm": 12
+          "help": "autoConnect_help",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "autoReconnect": {
           "type": "checkbox",
-          "label": "Bei Verbindungsabbruch neu verbinden",
+          "label": "autoReconnect",
           "default": true,
-          "help": "Empfohlen: Verbindung wird bei Abbruch automatisch wiederhergestellt.",
-          "sm": 12
+          "help": "autoReconnect_help",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "wgDisconnectOnStop": {
           "type": "checkbox",
-          "label": "WireGuard beim Adapter-Stopp trennen",
+          "label": "wgDisconnectOnStop",
           "default": true,
-          "sm": 12
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         }
       }
     },
     "tunnels": {
       "type": "panel",
-      "label": "Port-Tunnel",
+      "label": "tunnels",
       "items": {
         "tunnelHelp": {
           "type": "staticText",
-          "text": {
-            "de": "Leitet 127.0.0.1:[Lokaler Port] zum Gerät im entfernten Netz weiter. Beispiel Kostal piko 8.3:\n  Name: Kostal piko 8.3\n  Lokaler Port: 8085 (frei wählen, nicht von ioBroker belegt)\n  Ziel-IP: 192.168.178.30\n  Ziel-Port: 80\n  Aktiv: ja\nIm Kostal-Adapter dann: Host 127.0.0.1, Port 8085.\n\nZweiter Wechselrichter z. B. Port 8185 → 192.168.178.31:80, Kostal-Instanz mit Port 8185 und Web-UI z. B. 8192.",
-            "en": "Forwards 127.0.0.1:[local port] to a device in the remote network. Kostal piko 8.3 example:\n  Name: Kostal piko 8.3\n  Local port: 8085 (pick any free port)\n  Target IP: 192.168.178.30\n  Target port: 80\n  Active: yes\nIn Kostal adapter: host 127.0.0.1, port 8085.\n\nSecond inverter e.g. port 8185 → 192.168.178.31:80, Kostal instance with port 8185 and Web-UI e.g. 8192."
-          },
-          "sm": 12
+          "text": "tunnelHelp",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         },
         "tunnels": {
           "type": "table",
-          "label": "TCP Port-Weiterleitungen (127.0.0.1:lokal -> Remote-IP:Port ueber VPN)",
+          "label": "tunnelsTable",
+          "xs": 12,
           "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12,
           "items": [
             {
               "attr": "name",
               "type": "text",
-              "title": "Name",
+              "title": "tunnelName",
               "width": "22%"
             },
             {
               "attr": "localPort",
               "type": "number",
-              "title": "Lokaler Port",
+              "title": "localPort",
               "width": "15%"
             },
             {
               "attr": "remoteHost",
               "type": "text",
-              "title": "Ziel-IP",
+              "title": "remoteHost",
               "width": "28%"
             },
             {
               "attr": "remotePort",
               "type": "number",
-              "title": "Ziel-Port",
+              "title": "remotePort",
               "width": "15%"
             },
             {
               "attr": "enabled",
               "type": "checkbox",
-              "title": "Aktiv",
+              "title": "enabled",
               "width": "10%"
             }
           ]
         },
         "tunnelRestartHint": {
           "type": "staticText",
-          "text": {
-            "de": "Nach Aenderungen an Tunneln: Speichern und Adapter neu starten (oder in der Web-UI Tunnel neu starten).",
-            "en": "After tunnel changes: save and restart adapter (or restart tunnels in Web-UI)."
-          },
-          "sm": 12
+          "text": "tunnelRestartHint",
+          "xs": 12,
+          "sm": 12,
+          "md": 12,
+          "lg": 12,
+          "xl": 12
         }
       }
     },
     "advanced": {
       "type": "panel",
-      "label": "Erweitert",
+      "label": "advanced",
       "items": {
         "logBuffer": {
           "type": "number",
-          "label": "Log-Puffer (max. Eintraege)",
+          "label": "logBuffer",
           "default": 500,
+          "xs": 12,
           "sm": 12,
-          "md": 6
+          "md": 6,
+          "lg": 6,
+          "xl": 6
         }
       }
     }

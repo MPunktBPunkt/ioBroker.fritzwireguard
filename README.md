@@ -35,7 +35,7 @@ echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg *" \
 sudo chmod 440 /etc/sudoers.d/iobroker-wireguard
 ```
 
-On some hosts (Node with `setcap`, `sudo-rs`) the adapter also benefits from:
+On some hosts (Node with file capabilities and `sudo-rs`) also:
 
 ```bash
 sudo setcap cap_net_admin+ep /usr/bin/wg
@@ -49,9 +49,17 @@ sudo setcap cap_net_admin+ep /usr/bin/wg
 
 ## Installation
 
+Install the adapter from the official ioBroker adapter list:
+
+1. Open **ioBroker Admin** → **Adapters**
+2. Search for **FritzWireguard**
+3. Click **Install** and create an instance
+
+From the command line on the ioBroker host (after the adapter is listed in the repository):
+
 ```bash
-iobroker url https://github.com/MPunktBPunkt/ioBroker.fritzwireguard
 iobroker add fritzwireguard
+iobroker start fritzwireguard
 ```
 
 ## Configuration
@@ -103,16 +111,19 @@ PersistentKeepalive = 25
 
 | Symptom | Likely cause | Action |
 |---------|--------------|--------|
-| Admin shows “no handshake” but `wg show` is fine | Status read failed under Node/setcap | Update to ≥ 0.2.26 |
+| Admin shows “no handshake” but `wg show` is fine | Status read failed under Node capabilities | Update to ≥ 0.2.26 |
 | Local SSH/ping to ioBroker lost | `AllowedIPs` too broad or `/24` address | Use `/32` tunnel hosts only |
 | TR-064 without model / wrong box | Same subnet → local FritzBox answers | Optional; tunnels still work |
 | Empty device list | Remote TR-064 not reachable | Expected with subnet conflict |
 
 ## Changelog
 
+### 0.2.27
+* **Chore:** Repository-checker prep from kostalpiko/metermaster learnings (full i18n, `licenseInformation`, `tier`, Node ≥22, admin/js-controller deps, README install via adapter list, jsonConfig sizes, `node:` imports)
+
 ### 0.2.26
-* **Fix:** WireGuard status under Node + setcap + sudo-rs (`wg show` captured empty)
-* **Chore:** Align project with [ioBroker AI developer guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide) (LICENSE, CI, i18n, English README, `protectedNative`)
+* **Fix:** WireGuard status under Node + setcap + sudo-rs
+* **Chore:** Align project with [ioBroker AI developer guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 
 ### 0.2.25
 * Fix Web-UI WG byte stats, refresh on tab switch, admin help, test button icon
@@ -120,8 +131,26 @@ PersistentKeepalive = 25
 ### 0.2.24
 * Reload WG on config change; handshake-based status; IPv4 `/24` sanitizer; TR-064 same-subnet hint
 
-Older entries: see `io-package.json` news / git history.
-
 ## License
 
-MIT © 2024-2026 MPunktBPunkt <martin@bchmnn.de>
+MIT License
+
+Copyright (c) 2024-2026 MPunktBPunkt <martin@bchmnn.de>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

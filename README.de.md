@@ -62,9 +62,15 @@ sudo chmod 440 /etc/sudoers.d/iobroker-wireguard
 
 ## Installation
 
+Adapter aus der offiziellen ioBroker-Adapterliste installieren:
+
+1. **ioBroker Admin** → **Adapter**
+2. Nach **FritzWireguard** suchen
+3. Installieren und Instanz anlegen
+
 ```bash
-iobroker url https://github.com/MPunktBPunkt/iobroker.fritzwireguard
 iobroker add fritzwireguard
+iobroker start fritzwireguard
 ```
 
 ---
@@ -246,7 +252,6 @@ fritzwireguard.0.wireguard.handshake → z. B. "1 minute ago"
 ## Update
 
 ```bash
-iobroker url https://github.com/MPunktBPunkt/iobroker.fritzwireguard
 iobroker upload fritzwireguard
 iobroker restart fritzwireguard.0
 ```
