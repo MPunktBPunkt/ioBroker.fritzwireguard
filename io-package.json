@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.30",
+    "version": "0.2.31",
     "news": {
+      "0.2.31": {
+        "en": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "de": "Optionaler LAN-Zugriff für Port-Tunnel (Handy öffnet Wechselrichter-Web-UI)",
+        "ru": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "pt": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "nl": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "fr": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "it": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "es": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "pl": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "uk": "Optional LAN access for port tunnels (phone can open inverter web UI)",
+        "zh-cn": "Optional LAN access for port tunnels (phone can open inverter web UI)"
+      },
       "0.2.30": {
         "en": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
         "de": "Mobile-freundliche Tunnel/Nodes-Tabellen; klarerer Kostal Host/Port-Hinweis",
@@ -41,19 +54,6 @@
         "pl": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
         "uk": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
         "zh-cn": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)"
-      },
-      "0.2.27": {
-        "en": "Repo-checker prep: translations, licenseInformation, tier, Node 22, admin/js-controller deps, README install via adapter list, jsonConfig sizes, node: imports",
-        "de": "Repo-Checker-Vorbereitung: Übersetzungen, licenseInformation, tier, Node 22, admin/js-controller-Deps, README-Installation über Adapterliste, jsonConfig-Größen, node:-Imports",
-        "ru": "Подготовка к repo-checker: переводы, licenseInformation, tier, Node 22, зависимости admin/js-controller, установка из списка адаптеров, размеры jsonConfig, импорты node:",
-        "pt": "Preparação repo-checker: traduções, licenseInformation, tier, Node 22, deps admin/js-controller, instalação pela lista de adapters, tamanhos jsonConfig, imports node:",
-        "nl": "Repo-checker voorbereiding: vertalingen, licenseInformation, tier, Node 22, admin/js-controller deps, installatie via adapterlijst, jsonConfig-groottes, node:-imports",
-        "fr": "Préparation repo-checker : traductions, licenseInformation, tier, Node 22, deps admin/js-controller, installation via liste d’adapters, tailles jsonConfig, imports node:",
-        "it": "Preparazione repo-checker: traduzioni, licenseInformation, tier, Node 22, dipendenze admin/js-controller, installazione da lista adapter, dimensioni jsonConfig, import node:",
-        "es": "Preparación repo-checker: traducciones, licenseInformation, tier, Node 22, deps admin/js-controller, instalación desde lista de adapters, tamaños jsonConfig, imports node:",
-        "pl": "Przygotowanie pod repo-checker: tłumaczenia, licenseInformation, tier, Node 22, zależności admin/js-controller, instalacja z listy adapterów, rozmiary jsonConfig, importy node:",
-        "uk": "Підготовка до repo-checker: переклади, licenseInformation, tier, Node 22, залежності admin/js-controller, встановлення зі списку адаптерів, розміри jsonConfig, імпорти node:",
-        "zh-cn": "仓库检查准备：翻译、licenseInformation、tier、Node 22、admin/js-controller 依赖、通过适配器列表安装、jsonConfig 尺寸、node: 导入"
       }
     },
     "titleLang": {

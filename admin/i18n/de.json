@@ -34,7 +34,7 @@
   "autoReconnect": "Bei Abbruch neu verbinden",
   "autoReconnect_help": "Empfohlen: Verbindung nach Abbruch wiederherstellen.",
   "wgDisconnectOnStop": "WireGuard beim Adapter-Stopp trennen",
-  "tunnelHelp": "Leitet 127.0.0.1:localPort zum Gerät im entfernten Netz weiter. Beispiel: lokal 8085 nach 192.168.178.30 Port 80, Kostal dann auf 127.0.0.1:8085.",
+  "tunnelHelp": "Leitet einen lokalen Port zum Gerät im entfernten Netz weiter. Standard: nur 127.0.0.1 (für andere Adapter). „LAN-Zugriff“ öffnet denselben Port auf der Host-IP für Handy/PC im LAN. Kostal: Host 127.0.0.1, Port = lokaler Tunnel-Port (getrennte Felder).",
   "tunnelsTable": "TCP-Portweiterleitungen über VPN",
   "tunnelName": "Name",
   "localPort": "Lokaler Port",
@@ -42,5 +42,6 @@
   "remotePort": "Ziel-Port",
   "enabled": "Aktiv",
   "tunnelRestartHint": "Nach Tunnel-Änderungen: speichern und Adapter neu starten oder Tunnel in der Web-UI neu starten.",
-  "logBuffer": "Log-Puffer (max. Einträge)"
+  "logBuffer": "Log-Puffer (max. Einträge)",
+  "exposeLan": "LAN-Zugriff"
 }

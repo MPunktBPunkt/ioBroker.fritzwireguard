@@ -42,5 +42,6 @@
   "remotePort": "目标端口",
   "enabled": "启用",
   "tunnelRestartHint": "更改隧道后：保存并重启适配器，或在 Web-UI 中重启隧道。",
-  "logBuffer": "日志缓冲（最大条目数）"
+  "logBuffer": "日志缓冲（最大条目数）",
+  "exposeLan": "LAN access"
 }

@@ -42,5 +42,6 @@
   "remotePort": "Port docelowy",
   "enabled": "Aktywny",
   "tunnelRestartHint": "Po zmianach tuneli: zapisz i zrestartuj adapter lub tunele w Web-UI.",
-  "logBuffer": "Bufor logów (maks. wpisów)"
+  "logBuffer": "Bufor logów (maks. wpisów)",
+  "exposeLan": "LAN access"
 }

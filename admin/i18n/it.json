@@ -42,5 +42,6 @@
   "remotePort": "Porta di destinazione",
   "enabled": "Attivo",
   "tunnelRestartHint": "Dopo modifiche ai tunnel: salva e riavvia l’adapter oppure i tunnel nella Web-UI.",
-  "logBuffer": "Buffer log (max. voci)"
+  "logBuffer": "Buffer log (max. voci)",
+  "exposeLan": "LAN access"
 }

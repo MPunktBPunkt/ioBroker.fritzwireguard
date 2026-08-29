@@ -42,5 +42,6 @@
   "remotePort": "Doelpoort",
   "enabled": "Actief",
   "tunnelRestartHint": "Na tunnelwijzigingen: opslaan en adapter herstarten of tunnels in de Web-UI herstarten.",
-  "logBuffer": "Logbuffer (max. items)"
+  "logBuffer": "Logbuffer (max. items)",
+  "exposeLan": "LAN access"
 }

@@ -34,7 +34,7 @@
   "autoReconnect": "Reconnect when connection is lost",
   "autoReconnect_help": "Recommended: restore the connection after a drop.",
   "wgDisconnectOnStop": "Disconnect WireGuard when adapter stops",
-  "tunnelHelp": "Forwards 127.0.0.1 localPort to a device in the remote network. Example: local 8085 to 192.168.178.30 port 80, then point Kostal to 127.0.0.1:8085.",
+  "tunnelHelp": "Forwards a local port to a device in the remote network. Default: only 127.0.0.1 (for other adapters). Enable “LAN access” to open the same port on the host IP for phones/PCs in your LAN. Kostal: host 127.0.0.1, port = local tunnel port (separate fields).",
   "tunnelsTable": "TCP port forwards over VPN",
   "tunnelName": "Name",
   "localPort": "Local port",
@@ -42,5 +42,6 @@
   "remotePort": "Target port",
   "enabled": "Active",
   "tunnelRestartHint": "After tunnel changes: save and restart the adapter or restart tunnels in the Web-UI.",
-  "logBuffer": "Log buffer (max. entries)"
+  "logBuffer": "Log buffer (max. entries)",
+  "exposeLan": "LAN access"
 }

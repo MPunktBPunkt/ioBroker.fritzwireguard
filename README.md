@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.31
+* **Feature:** Per-tunnel checkbox “LAN access” to bind tunnels on the host IP (phone/PC)
+
 ### 0.2.30
 * **Fix:** Mobile layout for Tunnel/Nodes tables; clearer Kostal host vs port hint
 

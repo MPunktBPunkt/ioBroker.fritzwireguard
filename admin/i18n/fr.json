@@ -42,5 +42,6 @@
   "remotePort": "Port cible",
   "enabled": "Actif",
   "tunnelRestartHint": "Après modification des tunnels : enregistrez et redémarrez l’adapter ou les tunnels dans l’interface Web.",
-  "logBuffer": "Tampon de logs (entrées max.)"
+  "logBuffer": "Tampon de logs (entrées max.)",
+  "exposeLan": "LAN access"
 }

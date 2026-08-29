@@ -42,5 +42,6 @@
   "remotePort": "Puerto de destino",
   "enabled": "Activo",
   "tunnelRestartHint": "Tras cambiar túneles: guarde y reinicie el adapter o los túneles en la Web-UI.",
-  "logBuffer": "Búfer de log (máx. entradas)"
+  "logBuffer": "Búfer de log (máx. entradas)",
+  "exposeLan": "LAN access"
 }

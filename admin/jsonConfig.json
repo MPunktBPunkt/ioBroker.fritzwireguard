@@ -273,31 +273,37 @@
               "attr": "name",
               "type": "text",
               "title": "tunnelName",
-              "width": "18%"
+              "width": "16%"
             },
             {
               "attr": "localPort",
               "type": "number",
               "title": "localPort",
-              "width": "12%"
+              "width": "11%"
             },
             {
               "attr": "remoteHost",
               "type": "text",
               "title": "remoteHost",
-              "width": "20%"
+              "width": "18%"
             },
             {
               "attr": "remotePort",
               "type": "number",
               "title": "remotePort",
-              "width": "12%"
+              "width": "11%"
             },
             {
               "attr": "enabled",
               "type": "checkbox",
               "title": "enabled",
               "width": "8%"
+            },
+            {
+              "attr": "exposeLan",
+              "type": "checkbox",
+              "title": "exposeLan",
+              "width": "10%"
             }
           ]
         },
