@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.27",
+    "version": "0.2.28",
     "news": {
+      "0.2.28": {
+        "en": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "de": "Objektstruktur: englische State/Channel-Namen, Rollen date/text korrigiert, Device-Rollen (info.ip/mac, indicator.reachable)",
+        "ru": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "pt": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "nl": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "fr": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "it": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "es": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "pl": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "uk": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
+        "zh-cn": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)"
+      },
       "0.2.27": {
         "en": "Repo-checker prep: translations, licenseInformation, tier, Node 22, admin/js-controller deps, README install via adapter list, jsonConfig sizes, node: imports",
         "de": "Repo-Checker-Vorbereitung: Übersetzungen, licenseInformation, tier, Node 22, admin/js-controller-Deps, README-Installation über Adapterliste, jsonConfig-Größen, node:-Imports",
@@ -41,19 +54,6 @@
         "pl": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
         "uk": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
         "zh-cn": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon"
-      },
-      "0.2.24": {
-        "en": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "de": "Fix: WG bei Config-Änderung neu laden, Handshake-Status, IPv4-/24-Sanitizer, TR-064-Hinweis gleiches Subnetz",
-        "ru": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "pt": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "nl": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "fr": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "it": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "es": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "pl": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "uk": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint",
-        "zh-cn": "Fix: reload WG on config change, handshake-based status, IPv4/24 sanitizer, TR-064 same-subnet hint"
       }
     },
     "titleLang": {

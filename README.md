@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.28
+* **Fix:** Object structure for repository review (English names, roles, device attributes)
+
 ### 0.2.27
 * **Chore:** Repository-checker prep from kostalpiko/metermaster learnings (full i18n, `licenseInformation`, `tier`, Node ≥22, admin/js-controller deps, README install via adapter list, jsonConfig sizes, `node:` imports)
 

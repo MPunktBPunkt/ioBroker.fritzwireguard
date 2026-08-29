@@ -1,0 +1,247 @@
+{
+  "fritzwireguard.0.devices": {
+    "_id": "fritzwireguard.0.devices",
+    "type": "folder",
+    "common": {
+      "name": "Network devices"
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "ts": 1788009706853,
+    "user": "system.user.admin"
+  },
+  "fritzwireguard.0.fritzbox": {
+    "_id": "fritzwireguard.0.fritzbox",
+    "type": "channel",
+    "common": {
+      "name": "FritzBox"
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "ts": 1788009706851,
+    "user": "system.user.admin"
+  },
+  "fritzwireguard.0.fritzbox.connectionType": {
+    "type": "state",
+    "common": {
+      "name": "Connection type",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706911,
+    "_id": "fritzwireguard.0.fritzbox.connectionType",
+    "val": "Connected",
+    "ack": true
+  },
+  "fritzwireguard.0.fritzbox.externalIP": {
+    "type": "state",
+    "common": {
+      "name": "External IP",
+      "type": "string",
+      "role": "info.ip",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706907,
+    "_id": "fritzwireguard.0.fritzbox.externalIP",
+    "val": "84.164.225.252",
+    "ack": true
+  },
+  "fritzwireguard.0.fritzbox.firmwareVersion": {
+    "type": "state",
+    "common": {
+      "name": "Firmware version",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706915,
+    "_id": "fritzwireguard.0.fritzbox.firmwareVersion",
+    "val": "",
+    "ack": true
+  },
+  "fritzwireguard.0.fritzbox.modelName": {
+    "type": "state",
+    "common": {
+      "name": "FritzBox model",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706913,
+    "_id": "fritzwireguard.0.fritzbox.modelName",
+    "val": "",
+    "ack": true
+  },
+  "fritzwireguard.0.fritzbox.uptime": {
+    "type": "state",
+    "common": {
+      "name": "Uptime",
+      "type": "number",
+      "role": "value",
+      "unit": "s",
+      "read": true,
+      "write": false,
+      "def": 0
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706910,
+    "_id": "fritzwireguard.0.fritzbox.uptime",
+    "val": 1428976,
+    "ack": true
+  },
+  "fritzwireguard.0.info": {
+    "_id": "fritzwireguard.0.info",
+    "type": "channel",
+    "common": {
+      "name": "Adapter info"
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "ts": 1788009706846,
+    "user": "system.user.admin"
+  },
+  "fritzwireguard.0.info.connection": {
+    "_id": "fritzwireguard.0.info.connection",
+    "type": "state",
+    "common": {
+      "name": "Adapter connected",
+      "type": "boolean",
+      "role": "indicator.connected",
+      "read": true,
+      "write": false,
+      "def": false
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "ts": 1788009706854,
+    "user": "system.user.admin",
+    "val": true,
+    "ack": true
+  },
+  "fritzwireguard.0.info.lastUpdate": {
+    "type": "state",
+    "common": {
+      "name": "Last update",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706896,
+    "_id": "fritzwireguard.0.info.lastUpdate",
+    "val": "2026-08-29T13:21:46.975Z",
+    "ack": true
+  },
+  "fritzwireguard.0.wireguard": {
+    "_id": "fritzwireguard.0.wireguard",
+    "type": "channel",
+    "common": {
+      "name": "WireGuard"
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "ts": 1788009706850,
+    "user": "system.user.admin"
+  },
+  "fritzwireguard.0.wireguard.handshake": {
+    "type": "state",
+    "common": {
+      "name": "Last handshake",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706901,
+    "_id": "fritzwireguard.0.wireguard.handshake",
+    "val": "31 seconds ago",
+    "ack": true
+  },
+  "fritzwireguard.0.wireguard.rxBytes": {
+    "type": "state",
+    "common": {
+      "name": "Received bytes",
+      "type": "number",
+      "role": "value",
+      "unit": "B",
+      "read": true,
+      "write": false,
+      "def": 0
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706903,
+    "_id": "fritzwireguard.0.wireguard.rxBytes",
+    "val": 1541407,
+    "ack": true
+  },
+  "fritzwireguard.0.wireguard.status": {
+    "type": "state",
+    "common": {
+      "name": "WireGuard status",
+      "type": "string",
+      "role": "text",
+      "read": true,
+      "write": false,
+      "def": ""
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706899,
+    "_id": "fritzwireguard.0.wireguard.status",
+    "val": "connected",
+    "ack": true
+  },
+  "fritzwireguard.0.wireguard.txBytes": {
+    "type": "state",
+    "common": {
+      "name": "Sent bytes",
+      "type": "number",
+      "role": "value",
+      "unit": "B",
+      "read": true,
+      "write": false,
+      "def": 0
+    },
+    "native": {},
+    "from": "system.adapter.fritzwireguard.0",
+    "user": "system.user.admin",
+    "ts": 1788009706905,
+    "_id": "fritzwireguard.0.wireguard.txBytes",
+    "val": 1394606,
+    "ack": true
+  }
+}
