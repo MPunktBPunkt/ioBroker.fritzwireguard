@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.33",
+    "version": "0.2.34",
     "news": {
+      "0.2.34": {
+        "en": "Tunnel Web-UI: LAN address is a link only (no separate Open button, better mobile layout)",
+        "de": "Tunnel-Web-UI: LAN-Adresse nur noch als Link (kein extra Öffnen-Button, bessere Mobile-Ansicht)",
+        "ru": "Web-UI туннелей: LAN-адрес только как ссылка (без отдельной кнопки, лучше на мобильных)",
+        "pt": "Web-UI de túneis: endereço LAN só como ligação (sem botão extra, melhor no telemóvel)",
+        "nl": "Tunnel-Web-UI: LAN-adres alleen als link (geen aparte knop, beter op mobiel)",
+        "fr": "Web-UI tunnels : adresse LAN uniquement en lien (pas de bouton séparé, meilleur mobile)",
+        "it": "Web-UI tunnel: indirizzo LAN solo come link (niente pulsante extra, meglio su mobile)",
+        "es": "Web-UI de túneles: dirección LAN solo como enlace (sin botón extra, mejor en móvil)",
+        "pl": "Web-UI tuneli: adres LAN tylko jako link (bez osobnego przycisku, lepszy mobile)",
+        "uk": "Web-UI тунелів: LAN-адреса лише як посилання (без окремої кнопки, краще на мобільному)",
+        "zh-cn": "隧道 Web-UI：LAN 地址仅作链接（无单独打开按钮，移动端更清晰）"
+      },
       "0.2.33": {
         "en": "Tunnel Web-UI: open button/link for LAN-exposed ports; repo checker prep and warning cleanup",
         "de": "Tunnel-Web-UI: Öffnen-Button/Link bei LAN-Zugriff; Repo-Checker-Vorbereitung und Warnungsbereinigung",

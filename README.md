@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.34
+* **UI:** LAN tunnel address as link only (removed separate Open button for mobile layout)
+
 ### 0.2.33
 * **UI:** Tunnel tab — clickable LAN URL + Öffnen button when LAN access is enabled
 * **Repo:** npm provenance / trusted publishing; checker warning cleanup (tsconfig, prettier, compact, dependabot, CHANGELOG_OLD)
