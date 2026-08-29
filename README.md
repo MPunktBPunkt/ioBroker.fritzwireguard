@@ -121,6 +121,7 @@ PersistentKeepalive = 25
 ### 0.2.32
 * **Repo:** npm provenance / trusted publishing prep; news only for published versions
 * **Chore:** Checker warnings: tsconfig, prettier, vscode schema, dependabot, compact mode, CHANGELOG_OLD.md
+* **UI:** Tunnel tab — clickable LAN URL + Öffnen button when LAN access is enabled
 
 Older entries: [CHANGELOG_OLD.md](./CHANGELOG_OLD.md)
 
