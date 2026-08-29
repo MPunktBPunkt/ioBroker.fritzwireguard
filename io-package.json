@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.32",
+    "version": "0.2.33",
     "news": {
-      "0.2.32": {
-        "en": "Repo prep: npm provenance, checker warning cleanup (tsconfig, prettier, compact, dependabot)",
-        "de": "Repo-Vorbereitung: npm-Provenance, Checker-Warnungen bereinigt (tsconfig, prettier, compact, dependabot)",
-        "ru": "Подготовка репозитория: npm provenance, устранение предупреждений checker (tsconfig, prettier, compact, dependabot)",
-        "pt": "Preparação do repositório: provenance npm, limpeza de avisos do checker (tsconfig, prettier, compact, dependabot)",
-        "nl": "Repo-voorbereiding: npm-provenance, checker-waarschuwingen opgeschoond (tsconfig, prettier, compact, dependabot)",
-        "fr": "Préparation dépôt : provenance npm, nettoyage des avertissements checker (tsconfig, prettier, compact, dependabot)",
-        "it": "Preparazione repo: provenance npm, pulizia avvisi checker (tsconfig, prettier, compact, dependabot)",
-        "es": "Preparación del repo: provenance npm, limpieza de avisos del checker (tsconfig, prettier, compact, dependabot)",
-        "pl": "Przygotowanie repo: provenance npm, porządki ostrzeżeń checkera (tsconfig, prettier, compact, dependabot)",
-        "uk": "Підготовка репо: npm provenance, усунення попереджень checker (tsconfig, prettier, compact, dependabot)",
-        "zh-cn": "仓库准备：npm provenance，清理检查器警告（tsconfig、prettier、compact、dependabot）"
+      "0.2.33": {
+        "en": "Tunnel Web-UI: open button/link for LAN-exposed ports; repo checker prep and warning cleanup",
+        "de": "Tunnel-Web-UI: Öffnen-Button/Link bei LAN-Zugriff; Repo-Checker-Vorbereitung und Warnungsbereinigung",
+        "ru": "Web-UI туннелей: кнопка/ссылка Открыть при LAN-доступе; подготовка репозитория и очистка предупреждений",
+        "pt": "Web-UI de túneis: botão/ligação Abrir com acesso LAN; preparação do repositório e limpeza de avisos",
+        "nl": "Tunnel-Web-UI: Openen-knop/link bij LAN-toegang; repo-voorbereiding en waarschuwingen opgeschoond",
+        "fr": "Web-UI tunnels : bouton/lien Ouvrir avec accès LAN ; préparation dépôt et nettoyage des avertissements",
+        "it": "Web-UI tunnel: pulsante/link Apri con accesso LAN; preparazione repo e pulizia avvisi",
+        "es": "Web-UI de túneles: botón/enlace Abrir con acceso LAN; preparación del repo y limpieza de avisos",
+        "pl": "Web-UI tuneli: przycisk/link Otwórz przy dostępie LAN; przygotowanie repo i porządki ostrzeżeń",
+        "uk": "Web-UI тунелів: кнопка/посилання Відкрити при LAN-доступі; підготовка репо та очищення попереджень",
+        "zh-cn": "隧道 Web-UI：LAN 访问时提供打开按钮/链接；仓库检查准备与警告清理"
       }
     },
     "titleLang": {

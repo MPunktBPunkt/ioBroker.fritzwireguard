@@ -1,3 +1,6 @@
+### 0.2.32
+* Repo prep and checker warning cleanup (unpublished intermediate)
+
 ### 0.2.31
 * **Feature:** Per-tunnel checkbox “LAN access” to bind tunnels on the host IP (phone/PC)
 
