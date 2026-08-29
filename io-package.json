@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.29",
+    "version": "0.2.30",
     "news": {
+      "0.2.30": {
+        "en": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "de": "Mobile-freundliche Tunnel/Nodes-Tabellen; klarerer Kostal Host/Port-Hinweis",
+        "ru": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "pt": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "nl": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "fr": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "it": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "es": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "pl": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "uk": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
+        "zh-cn": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint"
+      },
       "0.2.29": {
         "en": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
         "de": "Fix Tunnel-Tab Tabellenlayout (feste Spalten, keine extreme Breite)",
@@ -41,19 +54,6 @@
         "pl": "Przygotowanie pod repo-checker: tłumaczenia, licenseInformation, tier, Node 22, zależności admin/js-controller, instalacja z listy adapterów, rozmiary jsonConfig, importy node:",
         "uk": "Підготовка до repo-checker: переклади, licenseInformation, tier, Node 22, залежності admin/js-controller, встановлення зі списку адаптерів, розміри jsonConfig, імпорти node:",
         "zh-cn": "仓库检查准备：翻译、licenseInformation、tier、Node 22、admin/js-controller 依赖、通过适配器列表安装、jsonConfig 尺寸、node: 导入"
-      },
-      "0.2.26": {
-        "en": "Fix WG status under Node/setcap/sudo-rs; align project with ioBroker AI developer guide",
-        "de": "Fix WG-Status unter Node/setcap/sudo-rs; Projekt an ioBroker AI Developer Guide angepasst",
-        "ru": "Исправление статуса WG при Node/setcap/sudo-rs; структура по ioBroker AI developer guide",
-        "pt": "Correção do status WG com Node/setcap/sudo-rs; alinhamento ao guia AI do ioBroker",
-        "nl": "Fix WG-status onder Node/setcap/sudo-rs; project afgestemd op ioBroker AI developer guide",
-        "fr": "Correctif statut WG sous Node/setcap/sudo-rs ; alignement sur le guide AI ioBroker",
-        "it": "Fix stato WG con Node/setcap/sudo-rs; allineamento alla guida AI ioBroker",
-        "es": "Corrección estado WG con Node/setcap/sudo-rs; alineación con guía AI ioBroker",
-        "pl": "Poprawka statusu WG przy Node/setcap/sudo-rs; zgodność z przewodnikiem AI ioBroker",
-        "uk": "Виправлення статусу WG при Node/setcap/sudo-rs; відповідність ioBroker AI developer guide",
-        "zh-cn": "修复 Node/setcap/sudo-rs 下的 WG 状态；按 ioBroker AI 开发指南调整项目"
       }
     },
     "titleLang": {

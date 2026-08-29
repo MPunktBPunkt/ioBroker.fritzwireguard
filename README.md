@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.30
+* **Fix:** Mobile layout for Tunnel/Nodes tables; clearer Kostal host vs port hint
+
 ### 0.2.29
 * **Fix:** Tunnel tab table width (fixed column layout)
 
