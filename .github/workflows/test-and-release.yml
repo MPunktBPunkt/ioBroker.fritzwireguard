@@ -39,6 +39,12 @@ jobs:
           os: ${{ matrix.os }}
           install-command: "npm install"
 
+  # Publishes via npm Trusted Publishing (OIDC). Configure once on npmjs.com:
+  # Package → Settings → Trusted Publisher → GitHub Actions
+  #   Organization/user: MPunktBPunkt
+  #   Repository: ioBroker.fritzwireguard
+  #   Workflow: test-and-release.yml
+  # Do NOT set npm-token here (would disable trusted publishing / provenance).
   deploy:
     needs: [check-and-lint, adapter-tests]
     if: |

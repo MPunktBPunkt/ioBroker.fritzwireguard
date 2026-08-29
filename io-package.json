@@ -1,59 +1,20 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.31",
+    "version": "0.2.32",
     "news": {
-      "0.2.31": {
-        "en": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "de": "Optionaler LAN-Zugriff für Port-Tunnel (Handy öffnet Wechselrichter-Web-UI)",
-        "ru": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "pt": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "nl": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "fr": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "it": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "es": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "pl": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "uk": "Optional LAN access for port tunnels (phone can open inverter web UI)",
-        "zh-cn": "Optional LAN access for port tunnels (phone can open inverter web UI)"
-      },
-      "0.2.30": {
-        "en": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "de": "Mobile-freundliche Tunnel/Nodes-Tabellen; klarerer Kostal Host/Port-Hinweis",
-        "ru": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "pt": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "nl": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "fr": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "it": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "es": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "pl": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "uk": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint",
-        "zh-cn": "Mobile-friendly Tunnel/Nodes tables; clearer Kostal host/port hint"
-      },
-      "0.2.29": {
-        "en": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "de": "Fix Tunnel-Tab Tabellenlayout (feste Spalten, keine extreme Breite)",
-        "ru": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "pt": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "nl": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "fr": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "it": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "es": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "pl": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "uk": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
-        "zh-cn": "Fix Tunnel tab table layout (fixed columns, no extreme width)"
-      },
-      "0.2.28": {
-        "en": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "de": "Objektstruktur: englische State/Channel-Namen, Rollen date/text korrigiert, Device-Rollen (info.ip/mac, indicator.reachable)",
-        "ru": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "pt": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "nl": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "fr": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "it": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "es": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "pl": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "uk": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
-        "zh-cn": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)"
+      "0.2.32": {
+        "en": "Official release prep: npm provenance publishing and repository checker fixes",
+        "de": "Vorbereitung auf offizielle Freigabe: npm-Provenance und Repository-Checker-Korrekturen",
+        "ru": "Подготовка к официальному релизу: публикация с npm provenance и исправления checker",
+        "pt": "Preparação para lançamento oficial: publicação com provenance npm e correções do checker",
+        "nl": "Voorbereiding officiële release: npm-provenance publicatie en repository-checker-fixes",
+        "fr": "Préparation publication officielle : provenance npm et corrections du repository checker",
+        "it": "Preparazione al rilascio ufficiale: pubblicazione con provenance npm e correzioni del checker",
+        "es": "Preparación para el lanzamiento oficial: provenance npm y correcciones del repository checker",
+        "pl": "Przygotowanie do oficjalnego wydania: publikacja z provenance npm i poprawki checkera",
+        "uk": "Підготовка до офіційного релізу: публікація з npm provenance та виправлення checker",
+        "zh-cn": "正式发布准备：npm provenance 发布与仓库检查器修复"
       }
     },
     "titleLang": {
