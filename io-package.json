@@ -4,17 +4,17 @@
     "version": "0.2.32",
     "news": {
       "0.2.32": {
-        "en": "Official release prep: npm provenance publishing and repository checker fixes",
-        "de": "Vorbereitung auf offizielle Freigabe: npm-Provenance und Repository-Checker-Korrekturen",
-        "ru": "Подготовка к официальному релизу: публикация с npm provenance и исправления checker",
-        "pt": "Preparação para lançamento oficial: publicação com provenance npm e correções do checker",
-        "nl": "Voorbereiding officiële release: npm-provenance publicatie en repository-checker-fixes",
-        "fr": "Préparation publication officielle : provenance npm et corrections du repository checker",
-        "it": "Preparazione al rilascio ufficiale: pubblicazione con provenance npm e correzioni del checker",
-        "es": "Preparación para el lanzamiento oficial: provenance npm y correcciones del repository checker",
-        "pl": "Przygotowanie do oficjalnego wydania: publikacja z provenance npm i poprawki checkera",
-        "uk": "Підготовка до офіційного релізу: публікація з npm provenance та виправлення checker",
-        "zh-cn": "正式发布准备：npm provenance 发布与仓库检查器修复"
+        "en": "Repo prep: npm provenance, checker warning cleanup (tsconfig, prettier, compact, dependabot)",
+        "de": "Repo-Vorbereitung: npm-Provenance, Checker-Warnungen bereinigt (tsconfig, prettier, compact, dependabot)",
+        "ru": "Подготовка репозитория: npm provenance, устранение предупреждений checker (tsconfig, prettier, compact, dependabot)",
+        "pt": "Preparação do repositório: provenance npm, limpeza de avisos do checker (tsconfig, prettier, compact, dependabot)",
+        "nl": "Repo-voorbereiding: npm-provenance, checker-waarschuwingen opgeschoond (tsconfig, prettier, compact, dependabot)",
+        "fr": "Préparation dépôt : provenance npm, nettoyage des avertissements checker (tsconfig, prettier, compact, dependabot)",
+        "it": "Preparazione repo: provenance npm, pulizia avvisi checker (tsconfig, prettier, compact, dependabot)",
+        "es": "Preparación del repo: provenance npm, limpieza de avisos del checker (tsconfig, prettier, compact, dependabot)",
+        "pl": "Przygotowanie repo: provenance npm, porządki ostrzeżeń checkera (tsconfig, prettier, compact, dependabot)",
+        "uk": "Підготовка репо: npm provenance, усунення попереджень checker (tsconfig, prettier, compact, dependabot)",
+        "zh-cn": "仓库准备：npm provenance，清理检查器警告（tsconfig、prettier、compact、dependabot）"
       }
     },
     "titleLang": {
@@ -83,7 +83,7 @@
       "license": "MIT"
     },
     "tier": 3,
-    "compact": false
+    "compact": true
   },
   "native": {
     "webPort": 8094,
