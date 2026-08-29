@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.28",
+    "version": "0.2.29",
     "news": {
+      "0.2.29": {
+        "en": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "de": "Fix Tunnel-Tab Tabellenlayout (feste Spalten, keine extreme Breite)",
+        "ru": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "pt": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "nl": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "fr": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "it": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "es": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "pl": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "uk": "Fix Tunnel tab table layout (fixed columns, no extreme width)",
+        "zh-cn": "Fix Tunnel tab table layout (fixed columns, no extreme width)"
+      },
       "0.2.28": {
         "en": "Object structure: English state/channel names, fix date/text roles, device roles (info.ip/mac, indicator.reachable)",
         "de": "Objektstruktur: englische State/Channel-Namen, Rollen date/text korrigiert, Device-Rollen (info.ip/mac, indicator.reachable)",
@@ -41,19 +54,6 @@
         "pl": "Poprawka statusu WG przy Node/setcap/sudo-rs; zgodność z przewodnikiem AI ioBroker",
         "uk": "Виправлення статусу WG при Node/setcap/sudo-rs; відповідність ioBroker AI developer guide",
         "zh-cn": "修复 Node/setcap/sudo-rs 下的 WG 状态；按 ioBroker AI 开发指南调整项目"
-      },
-      "0.2.25": {
-        "en": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "de": "Fix Web-UI WG-Byte-Statistik, Refresh bei Tab-Wechsel, Admin-Hilfe, Test-Button-Icon",
-        "ru": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "pt": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "nl": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "fr": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "it": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "es": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "pl": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "uk": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon",
-        "zh-cn": "Fix Web-UI WG byte stats, refresh on tab switch, admin help text, test button icon"
       }
     },
     "titleLang": {

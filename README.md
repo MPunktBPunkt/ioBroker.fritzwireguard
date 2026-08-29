@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.29
+* **Fix:** Tunnel tab table width (fixed column layout)
+
 ### 0.2.28
 * **Fix:** Object structure for repository review (English names, roles, device attributes)
 
