@@ -1,0 +1,38 @@
+# Dot-directories except github/vscode
+.*/
+!.vscode/
+!.github/
+
+*.code-workspace
+node_modules
+nbproject
+
+# npm package files
+iobroker.*.tgz
+*.tgz
+
+Thumbs.db
+.commitinfo
+
+# Secrets / local configs — never commit
+.env
+.env.*
+*.pem
+*.key
+# *private* (too broad)
+*.conf
+!admin/**/*.json
+!admin/**/*.svg
+wg-*.conf
+fritzwg*.conf
+**/secrets*
+**/credentials*
+
+# i18n intermediate files
+admin/i18n/flat.txt
+admin/i18n/*/flat.txt
+
+# Logs / temp
+*.log
+.DS_Store
+.dev-server/

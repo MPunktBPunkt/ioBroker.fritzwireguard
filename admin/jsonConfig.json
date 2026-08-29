@@ -1,4 +1,5 @@
 {
+  "i18n": true,
   "type": "tabs",
   "items": {
     "quickstart": {
@@ -38,7 +39,14 @@
           "label": "Aktueller Verbindungsstatus",
           "command": "getConnectionStatus",
           "container": "html",
-          "alsoDependsOn": ["wgConfig", "fritzHost", "fritzUser", "fritzPass", "tunnels", "autoConnect"],
+          "alsoDependsOn": [
+            "wgConfig",
+            "fritzHost",
+            "fritzUser",
+            "fritzPass",
+            "tunnels",
+            "autoConnect"
+          ],
           "sm": 12
         },
         "btnTest": {
@@ -52,12 +60,24 @@
           "sm": 12,
           "md": 6,
           "result": {
-            "ok": { "de": "Verbindung OK", "en": "Connection OK" },
-            "partial": { "de": "Teilweise OK — Details im Status", "en": "Partially OK — see status" },
-            "fail": { "de": "Verbindung fehlgeschlagen", "en": "Connection failed" }
+            "ok": {
+              "de": "Verbindung OK",
+              "en": "Connection OK"
+            },
+            "partial": {
+              "de": "Teilweise OK — Details im Status",
+              "en": "Partially OK — see status"
+            },
+            "fail": {
+              "de": "Verbindung fehlgeschlagen",
+              "en": "Connection failed"
+            }
           },
           "error": {
-            "fail": { "de": "Test fehlgeschlagen", "en": "Test failed" }
+            "fail": {
+              "de": "Test fehlgeschlagen",
+              "en": "Test failed"
+            }
           }
         },
         "btnWebUI": {

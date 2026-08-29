@@ -1,28 +1,69 @@
 {
   "name": "iobroker.fritzwireguard",
-  "version": "0.2.25",
-  "description": "ioBroker Adapter: WireGuard VPN zu FritzBox via TR-064",
-  "author": "MPunktBPunkt",
+  "version": "0.2.26",
+  "description": "ioBroker adapter: WireGuard VPN to a remote FritzBox with optional TR-064 and TCP tunnel manager",
+  "author": {
+    "name": "MPunktBPunkt",
+    "email": "martin@bchmnn.de"
+  },
+  "contributors": [],
+  "homepage": "https://github.com/MPunktBPunkt/ioBroker.fritzwireguard",
   "license": "MIT",
-  "main": "main.js",
-  "scripts": {
-    "start": "node main.js"
+  "keywords": [
+    "ioBroker",
+    "wireguard",
+    "fritzbox",
+    "vpn",
+    "tr-064",
+    "network"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MPunktBPunkt/ioBroker.fritzwireguard.git"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.2.2"
   },
-  "engines": {
-    "node": ">=16"
+  "devDependencies": {
+    "@iobroker/eslint-config": "^2.2.0",
+    "@iobroker/testing": "^5.2.2",
+    "@types/chai": "^4.3.20",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.0",
+    "@types/sinon": "^17.0.4",
+    "@types/sinon-chai": "^3.2.12",
+    "chai": "^4.5.0",
+    "chai-as-promised": "^7.1.2",
+    "eslint": "^9.28.0",
+    "mocha": "^11.1.0",
+    "sinon": "^19.0.2",
+    "sinon-chai": "^3.7.0"
   },
-  "keywords": [
-    "iobroker",
-    "adapter",
-    "wireguard",
-    "fritzbox",
-    "vpn"
+  "main": "main.js",
+  "files": [
+    "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).{json,json5}",
+    "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
+    "admin/i18n/",
+    "lib/",
+    "docs/",
+    "io-package.json",
+    "LICENSE",
+    "main.js",
+    "fritzwireguard.svg"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MPunktBPunkt/iobroker.fritzwireguard.git"
-  }
+  "scripts": {
+    "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
+    "test:package": "mocha test/package --exit",
+    "test:integration": "mocha test/integration --exit",
+    "test": "npm run test:js && npm run test:package",
+    "lint": "eslint -c eslint.config.mjs ."
+  },
+  "bugs": {
+    "url": "https://github.com/MPunktBPunkt/ioBroker.fritzwireguard/issues"
+  },
+  "readmeFilename": "README.md"
 }

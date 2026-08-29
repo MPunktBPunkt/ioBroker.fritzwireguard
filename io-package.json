@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.25",
+    "version": "0.2.26",
     "news": {
+      "0.2.26": {
+        "en": "Fix WG status under Node/setcap/sudo-rs (empty wg show); project structure aligned with ioBroker AI developer guide (LICENSE, CI, i18n, English README)",
+        "de": "Fix WG-Status unter Node/setcap/sudo-rs (leeres wg show); Projektstruktur an ioBroker AI Developer Guide angepasst (LICENSE, CI, i18n, englisches README)"
+      },
       "0.2.25": {
         "en": "Fix Web-UI WG byte stats (KiB/MiB), refresh on tab switch, admin plain-text help, test button icon",
         "de": "Fix Web-UI WG-Byte-Statistik (KiB/MiB), Refresh bei Tab-Wechsel, Admin-Hilfe als Klartext, Test-Button-Icon"
@@ -23,82 +27,6 @@
         "en": "Fix: WireGuard interface name max 15 chars (fritzwg); sudo -n with full paths; auto-narrow AllowedIPs /24 to tunnel hosts",
         "de": "Fix: WG-Interface-Name max 15 Zeichen (fritzwg); sudo -n mit Vollpfaden; AllowedIPs /24 automatisch auf Tunnel-Hosts eingeschraenkt"
       },
-      "0.2.19": {
-        "en": "Fix: defer loading lib/adapter.js until onReady via lib/bind.js — fixes States-DB init hang",
-        "de": "Fix: lib/adapter.js erst in onReady laden (lib/bind.js) — behebt States-DB-Init-Hänger"
-      },
-      "0.2.18": {
-        "en": "Fix: lazy-load adapter implementation via thin main.js loader — fixes States-DB startup hang",
-        "de": "Fix: Adapter-Implementierung per duennem main.js-Loader lazy laden — behebt States-DB-Startup-Hänger"
-      },
-      "0.2.17": {
-        "en": "Fix: remove throw in global exception handlers (broke States-DB init); message handler early with no sendTo during startup",
-        "de": "Fix: throw in globalen Exception-Handlern entfernt (blockierte States-DB-Init); Message-Handler frueh ohne sendTo beim Start"
-      },
-      "0.2.16": {
-        "en": "Fix: rethrow uncaughtException/unhandledRejection instead of swallowing — prevented silent hang after Objects DB init",
-        "de": "Fix: uncaughtException/unhandledRejection weiterwerfen statt schlucken — verhinderte stilles Haengen nach Objects-DB-Init"
-      },
-      "0.2.15": {
-        "en": "Fix: defer message handler until onReady to prevent admin textSendTo blocking startup; startup diagnostics",
-        "de": "Fix: message-Handler erst in onReady — verhindert dass Admin textSendTo den Start blockiert; Startup-Diagnose"
-      },
-      "0.2.14": {
-        "en": "New Quick Start tab with connection test, Web-UI link, multiline WG config, help texts and subnet conflict guide",
-        "de": "Neuer Schnellstart-Tab mit Verbindungstest, Web-UI-Link, Mehrzeilen-WG-Config, Hilfetexten und Subnetz-Konflikt-Hinweis"
-      },
-      "0.2.13": {
-        "en": "Fix: module.parent is deprecated/undefined in Node 14+ - back to require.main !== module; debug log for export path",
-        "de": "Fix: module.parent ist deprecated/undefined in Node 14+ - zurueck zu require.main !== module; Debug-Log fuer Export-Pfad"
-      },
-      "0.2.12": {
-        "en": "Fix: module.parent export pattern (proven in other adapters); debug in constructor; factory debug",
-        "de": "Fix: module.parent Export-Pattern (bewaehrt in anderen Adaptern); Debug im Konstruktor; Factory-Debug"
-      },
-      "0.2.11": {
-        "en": "Debug: file-based logging to /tmp/fritzwireguard-debug.log; removed process.exit(1) from uncaughtException",
-        "de": "Debug: dateibasiertes Logging nach /tmp/fritzwireguard-debug.log; process.exit(1) aus uncaughtException entfernt"
-      },
-      "0.2.10": {
-        "en": "Root fix: onUnload calls callback() immediately and synchronously - wg-quick down runs fire-and-forget after callback",
-        "de": "Root-Fix: onUnload ruft callback() sofort und synchron auf - wg-quick down laeuft fire-and-forget nach callback"
-      },
-      "0.2.9": {
-        "en": "Debug: added console.log + uncaughtException handler to trace startup crash; GitHub URLs to lowercase",
-        "de": "Debug: console.log + uncaughtException Handler zum Aufspueren des Startup-Crashs; GitHub URLs in Kleinschreibung"
-      },
-      "0.2.8": {
-        "en": "Bugfix: jsonConfig table items must be array with attr fields, not object with key names",
-        "de": "Bugfix: jsonConfig Tunnel-Tabelle items muss Array mit attr-Feldern sein, kein Objekt mit Key-Namen"
-      },
-      "0.2.7": {
-        "en": "Root fix: adapter-core v3 requires utils.Adapter not destructured Adapter import",
-        "de": "Root-Fix: adapter-core v3 erfordert utils.Adapter statt destrukturiertem Adapter-Import"
-      },
-      "0.2.6": {
-        "en": "Bugfix: SYSTEM/INFO log levels used l.debug() which is filtered by ioBroker - now correctly uses l.info()",
-        "de": "Bugfix: SYSTEM/INFO Log-Level nutzten l.debug() das von ioBroker gefiltert wird - jetzt korrekt l.info()"
-      },
-      "0.2.5": {
-        "en": "Bugfix: NO_ERROR termination - onReady error keeps process alive and logs full stack trace",
-        "de": "Bugfix: NO_ERROR Beendigung - Fehler in onReady haelt Prozess am Leben und loggt vollen Stack-Trace"
-      },
-      "0.2.4": {
-        "en": "Bugfix: 'textarea' is not a valid ioBroker jsonConfig type - replaced with 'text'",
-        "de": "Bugfix: 'textarea' ist kein gueltiger ioBroker jsonConfig Typ - ersetzt durch 'text'"
-      },
-      "0.2.3": {
-        "en": "Bugfix: jsonConfig schema errors (textarea instead of text+multiline, removed invalid properties); icon path fixed",
-        "de": "Bugfix: jsonConfig Schema-Fehler (textarea statt text+multiline, ungueltige Properties entfernt); Icon-Pfad korrigiert"
-      },
-      "0.2.2": {
-        "en": "Bugfix: SIGKILL on stop (onUnload timeout guard, server.closeAllConnections); onReady wrapped in try/catch; this.config guard in _log",
-        "de": "Bugfix: SIGKILL beim Stopp (onUnload Timeout-Guard, server.closeAllConnections); onReady in try/catch; this.config Guard in _log"
-      },
-      "0.2.1": {
-        "en": "Bugfix: password field crash in admin settings; encrypted storage for password and WireGuard config; guarded this.log in early init",
-        "de": "Bugfix: Absturz Einstellungsseite bei Passwort-Eingabe; verschluesselte Speicherung Passwort + WireGuard-Config; this.log in fruehes Init abgesichert"
-      },
       "0.2.0": {
         "en": "TCP Tunnel Manager for selective adapter routing through VPN; WireGuard config sanitizer",
         "de": "TCP Tunnel Manager fuer selektives Adapter-Routing durch VPN; WireGuard Config-Sanitizer"
@@ -118,7 +46,7 @@
       "en": "Connects to a remote FritzBox via WireGuard VPN and reads devices, WAN status and more via TR-064."
     },
     "authors": [
-      "MPunktBPunkt"
+      "MPunktBPunkt <martin@bchmnn.de>"
     ],
     "keywords": [
       "wireguard",
@@ -132,8 +60,8 @@
     "main": "main.js",
     "icon": "fritzwireguard.svg",
     "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/MPunktBPunkt/iobroker.fritzwireguard/main/admin/fritzwireguard.svg",
-    "readme": "https://github.com/MPunktBPunkt/iobroker.fritzwireguard/blob/main/README.md",
+    "extIcon": "https://raw.githubusercontent.com/MPunktBPunkt/ioBroker.fritzwireguard/main/admin/fritzwireguard.svg",
+    "readme": "https://github.com/MPunktBPunkt/ioBroker.fritzwireguard/blob/main/README.md",
     "loglevel": "info",
     "mode": "daemon",
     "type": "network",
@@ -148,7 +76,7 @@
     ],
     "globalDependencies": [],
     "connectionType": "local",
-    "dataSource": "push",
+    "dataSource": "poll",
     "stopTimeout": 10000
   },
   "native": {
@@ -171,7 +99,7 @@
       "_id": "info",
       "type": "channel",
       "common": {
-        "name": "Adapter-Info"
+        "name": "Adapter info"
       },
       "native": {}
     },
@@ -179,7 +107,7 @@
       "_id": "info.connection",
       "type": "state",
       "common": {
-        "name": "Adapter verbunden",
+        "name": "Adapter connected",
         "type": "boolean",
         "role": "indicator.connected",
         "read": true,
@@ -208,12 +136,16 @@
       "_id": "devices",
       "type": "folder",
       "common": {
-        "name": "Netzwerkgeraete"
+        "name": "Network devices"
       },
       "native": {}
     }
   ],
   "encryptedNative": [
+    "fritzPass",
+    "wgConfig"
+  ],
+  "protectedNative": [
     "fritzPass",
     "wgConfig"
   ]
