@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.34",
+    "version": "0.2.35",
     "news": {
+      "0.2.35": {
+        "en": "Web-UI: detect local vs remote FritzBox for TR-064; hide misleading WAN/host data on same subnet; show tunnel targets on Nodes; clarify System counters",
+        "de": "Web-UI: TR-064 erkennt lokale vs. entfernte FritzBox; keine irreführenden WAN/Hosts-Daten bei gleichem Subnetz; Nodes zeigt Tunnel-Ziele; klarere System-Zähler",
+        "ru": "Web-UI: TR-064 различает локальную и удалённую FritzBox; без ложных WAN/Hosts при одной подсети; Nodes показывает цели туннелей; понятнее счётчики System",
+        "pt": "Web-UI: TR-064 distingue FritzBox local/remota; sem dados WAN/Hosts enganadores na mesma subnet; Nodes mostra destinos de túnel; contadores System mais claros",
+        "nl": "Web-UI: TR-064 herkent lokale vs externe FritzBox; geen misleidende WAN/hosts bij hetzelfde subnet; Nodes toont tunneltargets; duidelijkere System-tellers",
+        "fr": "Web-UI : TR-064 détecte FritzBox locale vs distante ; pas de données WAN/hôtes trompeuses sur même sous-réseau ; Nodes affiche les cibles de tunnel ; compteurs System plus clairs",
+        "it": "Web-UI: TR-064 distingue FritzBox locale/remota; niente dati WAN/host fuorvianti sulla stessa subnet; Nodes mostra target tunnel; contatori System più chiari",
+        "es": "Web-UI: TR-064 distingue FritzBox local/remota; sin datos WAN/hosts engañosos en misma subred; Nodes muestra destinos de túnel; contadores System más claros",
+        "pl": "Web-UI: TR-064 rozpoznaje lokalną vs zdalną FritzBox; bez mylących danych WAN/hosts w tej samej podsieci; Nodes pokazuje cele tuneli; czytelniejsze liczniki System",
+        "uk": "Web-UI: TR-064 розрізняє локальну та віддалену FritzBox; без оманливих WAN/Hosts при одній підмережі; Nodes показує цілі тунелів; зрозуміліші лічильники System",
+        "zh-cn": "Web-UI：TR-064 区分本地/远程 FritzBox；同网段时不再显示误导性 WAN/主机数据；Nodes 显示隧道目标；System 计数更清晰"
+      },
       "0.2.34": {
         "en": "Tunnel Web-UI: LAN address is a link only (no separate Open button, better mobile layout)",
         "de": "Tunnel-Web-UI: LAN-Adresse nur noch als Link (kein extra Öffnen-Button, bessere Mobile-Ansicht)",

@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.35
+* Web-UI: skip misleading local FritzBox TR-064 data when `.1` is not routed via WireGuard (same subnet); Nodes falls back to tunnel targets; System shows tunnel vs TR-064 counters clearly
+
 ### 0.2.34
 * **UI:** LAN tunnel address as link only (removed separate Open button for mobile layout)
 
