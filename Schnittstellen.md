@@ -282,6 +282,6 @@ Anderer Adapter verbindet 127.0.0.1:8085 (z.B. Kostal)
 | `WG`      | WireGuard Connect/Disconnect/Sanitize-Warnings  |
 | `TR064`   | SOAP-Abfragen (WAN, Status, DeviceInfo)         |
 | `HOSTS`   | Host-Listing                                    |
-| `TUNNEL`  | Tunnel-Start, neue Verbindungen, Fehler         |
+| `TUNNEL`  | Tunnel-Start (info), Verbindungen (debug), Fehler |
 | `POLL`    | Poll-Zyklus Fehler                              |
 | `STATE`   | State-Änderungen                                |

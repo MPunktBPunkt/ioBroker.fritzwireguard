@@ -260,6 +260,9 @@ iobroker restart fritzwireguard.0
 
 ## Changelog
 
+### 0.2.36
+* Weniger Logs: Tunnel-Verbindungen als debug statt info; Start/Fehler unverändert
+
 ### 0.2.25 (2026-06-25)
 * **Fix:** Web-UI WG-Byte-Statistik (KiB/MiB), Live-Refresh bei Tab-Wechsel
 * **Fix:** Admin-Hilfetexte als Klartext; Test-Button-Icon `play_arrow`

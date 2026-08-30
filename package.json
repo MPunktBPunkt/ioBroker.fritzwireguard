@@ -1,6 +1,6 @@
 {
   "name": "iobroker.fritzwireguard",
-  "version": "0.2.35",
+  "version": "0.2.36",
   "description": "ioBroker adapter: WireGuard VPN to a remote FritzBox with optional TR-064 and TCP tunnel manager",
   "author": {
     "name": "MPunktBPunkt",

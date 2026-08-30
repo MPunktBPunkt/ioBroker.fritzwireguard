@@ -118,6 +118,9 @@ PersistentKeepalive = 25
 
 ## Changelog
 
+### 0.2.36
+* Log less: per-connection tunnel traffic at debug (not info); tunnel start/errors unchanged
+
 ### 0.2.35
 * Web-UI: skip misleading local FritzBox TR-064 data when `.1` is not routed via WireGuard (same subnet); Nodes falls back to tunnel targets; System shows tunnel vs TR-064 counters clearly
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.35",
+    "version": "0.2.36",
     "news": {
+      "0.2.36": {
+        "en": "Reduce log noise: per-connection tunnel traffic logged at debug instead of info",
+        "de": "Weniger Log-Rauschen: Tunnel-Verbindungen nur noch als debug statt info",
+        "ru": "Меньше шума в логах: трафик туннеля по соединениям на уровне debug вместо info",
+        "pt": "Menos ruído nos logs: tráfego de túnel por conexão em debug em vez de info",
+        "nl": "Minder logruis: tunnelverkeer per verbinding op debug i.p.v. info",
+        "fr": "Moins de bruit dans les logs : trafic tunnel par connexion en debug au lieu d’info",
+        "it": "Meno rumore nei log: traffico tunnel per connessione a livello debug invece di info",
+        "es": "Menos ruido en logs: tráfico de túnel por conexión en debug en lugar de info",
+        "pl": "Mniej szumu w logach: ruch tunelu per połączenie na poziomie debug zamiast info",
+        "uk": "Менше шуму в логах: трафік тунелю на з’єднання на рівні debug замість info",
+        "zh-cn": "减少日志噪音：按连接的隧道流量改为 debug 而非 info"
+      },
       "0.2.35": {
         "en": "Web-UI: detect local vs remote FritzBox for TR-064; hide misleading WAN/host data on same subnet; show tunnel targets on Nodes; clarify System counters",
         "de": "Web-UI: TR-064 erkennt lokale vs. entfernte FritzBox; keine irreführenden WAN/Hosts-Daten bei gleichem Subnetz; Nodes zeigt Tunnel-Ziele; klarere System-Zähler",
@@ -28,19 +41,6 @@
         "pl": "Web-UI tuneli: adres LAN tylko jako link (bez osobnego przycisku, lepszy mobile)",
         "uk": "Web-UI тунелів: LAN-адреса лише як посилання (без окремої кнопки, краще на мобільному)",
         "zh-cn": "隧道 Web-UI：LAN 地址仅作链接（无单独打开按钮，移动端更清晰）"
-      },
-      "0.2.33": {
-        "en": "Tunnel Web-UI: open button/link for LAN-exposed ports; repo checker prep and warning cleanup",
-        "de": "Tunnel-Web-UI: Öffnen-Button/Link bei LAN-Zugriff; Repo-Checker-Vorbereitung und Warnungsbereinigung",
-        "ru": "Web-UI туннелей: кнопка/ссылка Открыть при LAN-доступе; подготовка репозитория и очистка предупреждений",
-        "pt": "Web-UI de túneis: botão/ligação Abrir com acesso LAN; preparação do repositório e limpeza de avisos",
-        "nl": "Tunnel-Web-UI: Openen-knop/link bij LAN-toegang; repo-voorbereiding en waarschuwingen opgeschoond",
-        "fr": "Web-UI tunnels : bouton/lien Ouvrir avec accès LAN ; préparation dépôt et nettoyage des avertissements",
-        "it": "Web-UI tunnel: pulsante/link Apri con accesso LAN; preparazione repo e pulizia avvisi",
-        "es": "Web-UI de túneles: botón/enlace Abrir con acceso LAN; preparación del repo y limpieza de avisos",
-        "pl": "Web-UI tuneli: przycisk/link Otwórz przy dostępie LAN; przygotowanie repo i porządki ostrzeżeń",
-        "uk": "Web-UI тунелів: кнопка/посилання Відкрити при LAN-доступі; підготовка репо та очищення попереджень",
-        "zh-cn": "隧道 Web-UI：LAN 访问时提供打开按钮/链接；仓库检查准备与警告清理"
       }
     },
     "titleLang": {
