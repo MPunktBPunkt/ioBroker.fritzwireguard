@@ -34,7 +34,7 @@ entfernten Netz zu verbinden — ohne den restlichen Traffic anderer Adapter zu 
 * **TCP Tunnel Manager** – `127.0.0.1:<Port>` → Remote-IP:Port über VPN; mehrere Tunnel parallel
 * **Web-UI** – Tabs Daten, Nodes, Tunnel, Logs, System
 * **Schnellstart im Admin** – Live-Status, Verbindungstest, Web-UI-Link
-* **Auto-Reconnect** – erkennt fehlenden Handshake und verbindet neu
+* **Auto-Reconnect** – bei totem Handshake zuerst MyFRITZ/DynDNS-Endpoint neu auflösen, sonst voller Reload
 
 ---
 
@@ -47,7 +47,9 @@ sudo apt update && sudo apt install -y wireguard
 
 echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg-quick" \
   | sudo tee /etc/sudoers.d/iobroker-wireguard
-echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg" \
+echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg *" \
+  | sudo tee -a /etc/sudoers.d/iobroker-wireguard
+echo "iobroker ALL=(ALL) NOPASSWD: /usr/sbin/ip *" \
   | sudo tee -a /etc/sudoers.d/iobroker-wireguard
 sudo chmod 440 /etc/sudoers.d/iobroker-wireguard
 ```
@@ -227,6 +229,7 @@ fritzwireguard.0.wireguard.handshake → z. B. "1 minute ago"
 | `fritzwg already exists` | Altes Interface nach Config-Wechsel | v0.2.24+: Adapter neu starten (lädt Interface neu) |
 | SSH/Ping zum ioBroker weg | `AllowedIPs` zu breit oder `/24`-Address | Nur `/32` der Wechselrichter; Adapter-Sanitizer prüfen |
 | Handshake „nie" | Falsche/veraltete `.conf` | Neue Config von Remote-FritzBox exportieren |
+| Handshake stirbt nach WAN-IP-Wechsel | WireGuard behält alte aufgelöste IP | `Endpoint` als MyFRITZ-Hostname; Auto-Reconnect (≥ 0.2.37) |
 | TR-064 ohne Modellname | Gleiches Subnetz → lokale FritzBox | Optional ignorieren; Kostal-Tunnel unabhängig |
 | Kostal Timeout | Falsche IP im Kostal-Adapter | Kostal: `127.0.0.1` + **Tunnel-Port**, nicht Remote-IP |
 | Nodes leer | TR-064 erreicht Remote-FritzBox nicht | Normal bei Subnetz-Konflikt; Tunnel reicht für Kostal |
@@ -259,6 +262,9 @@ iobroker restart fritzwireguard.0
 ---
 
 ## Changelog
+
+### 0.2.37
+* Bei veraltetem Handshake zuerst WireGuard-`Endpoint` (MyFRITZ/DynDNS) neu auflösen, dann voller Reconnect; `/32`-Host-Routen auf `fritzwg` erhalten; Tests mit Node.js 26; Zeilenumbrüche im Admin-Schnellstart (`<br/>`)
 
 ### 0.2.36
 * Weniger Logs: Tunnel-Verbindungen als debug statt info; Start/Fehler unverändert
