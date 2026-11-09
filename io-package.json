@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "fritzwireguard",
-    "version": "0.2.36",
+    "version": "0.2.37",
     "news": {
+      "0.2.37": {
+        "en": "Re-resolve WireGuard Endpoint (MyFRITZ) on stale handshake before full reconnect; keep /32 host routes; test Node.js 26; fix Admin quick-start line breaks",
+        "de": "WireGuard-Endpoint (MyFRITZ) bei veraltetem Handshake neu auflösen vor vollem Reconnect; /32-Host-Routen erhalten; Tests mit Node.js 26; Zeilenumbrüche im Admin-Schnellstart"
+      },
       "0.2.36": {
         "en": "Reduce log noise: per-connection tunnel traffic logged at debug instead of info",
         "de": "Weniger Log-Rauschen: Tunnel-Verbindungen nur noch als debug statt info",

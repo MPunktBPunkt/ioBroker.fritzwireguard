@@ -19,7 +19,7 @@ German documentation: [README.de.md](./README.de.md)
 * TCP tunnel manager: `127.0.0.1:<port>` → remote host:port over VPN
 * Web-UI (data, nodes, tunnels, logs, system)
 * Admin quick-start with live status and connection test
-* Auto-reconnect when handshake is lost
+* Auto-reconnect when handshake is lost (re-resolves MyFRITZ/DynDNS endpoint first, then full reload)
 
 ## Requirements
 
@@ -31,6 +31,8 @@ sudo apt update && sudo apt install -y wireguard
 echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg-quick" \
   | sudo tee /etc/sudoers.d/iobroker-wireguard
 echo "iobroker ALL=(ALL) NOPASSWD: /usr/bin/wg *" \
+  | sudo tee -a /etc/sudoers.d/iobroker-wireguard
+echo "iobroker ALL=(ALL) NOPASSWD: /usr/sbin/ip *" \
   | sudo tee -a /etc/sudoers.d/iobroker-wireguard
 sudo chmod 440 /etc/sudoers.d/iobroker-wireguard
 ```
@@ -115,8 +117,12 @@ PersistentKeepalive = 25
 | Local SSH/ping to ioBroker lost | `AllowedIPs` too broad or `/24` address | Use `/32` tunnel hosts only |
 | TR-064 without model / wrong box | Same subnet → local FritzBox answers | Optional; tunnels still work |
 | Empty device list | Remote TR-064 not reachable | Expected with subnet conflict |
+| Handshake dies after WAN IP change | WireGuard keeps old resolved IP | Use MyFRITZ hostname as `Endpoint`; enable Auto-Reconnect (≥ 0.2.37) |
 
 ## Changelog
+
+### 0.2.37
+* On stale handshake, re-resolve WireGuard `Endpoint` (MyFRITZ/DynDNS) before full reconnect; keep `/32` host routes on `fritzwg`; test Node.js 26; Admin quick-start line breaks (`<br/>`)
 
 ### 0.2.36
 * Log less: per-connection tunnel traffic at debug (not info); tunnel start/errors unchanged
